@@ -19,9 +19,9 @@ export enum Status{
     changed,
     delete
 }
-export default interface EmployeeT{
+export default interface LocalEmployee{
     ServerDAta:Employee
     status:Status
 }
 
-let T:EmployeeT;
+
