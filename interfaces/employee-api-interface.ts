@@ -1,7 +1,7 @@
 import Employee from "../entities/user";
 
 
-export default interface UserInterface{
+export interface UserInterface{
     /**This is used to get all employees from the DAO*/
     getAllEmployees():Promise<Employee[]>
     
@@ -11,4 +11,12 @@ export default interface UserInterface{
 
     getEmployee(ID:string):Promise<Employee>
 
+}
+
+
+export  interface localInterface{
+    getLocalEmployees(): Employee[] 
+    createEmployee(Employee: Employee) 
+    deleteEmployee(Employee: Employee) 
+    changePassword(Employee: Employee, passwordChange: string) 
 }
