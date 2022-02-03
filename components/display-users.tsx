@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView, View } from "react-native";
 import { v4 } from "uuid";
 import LocalHandler from "../classes/local-handler";
-import LocalEmployee from "../entitites/user";
+import LocalEmployee, { Employee } from "../entitites/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 
 
@@ -19,11 +19,9 @@ export default function UserDisplay(){
         //Gets an array of local users
         let localEmployeeArray: LocalEmployee[] =  []//localHandler.getLocalEmployees()
         //temp user for testing
+        const fakeLocalEmployee:LocalEmployee={ServerDAta: undefined,status:0}
         for(let i = 0; i < 40; i++){
-            localEmployeeArray.push({
-                serverData: undefined,
-                status: 0
-            })
+            localEmployeeArray.push( fakeLocalEmployee)
         }
         // returns a default array if no users are found
         if( !(localEmployeeArray.length >1)) {return [<></>]}
