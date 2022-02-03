@@ -20,7 +20,7 @@ export enum Status{
     delete
 }
 export default interface LocalEmployee{
-    ServerDAta:Employee
+    serverData:Employee
     status:Status
 }
 
