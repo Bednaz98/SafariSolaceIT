@@ -19,7 +19,8 @@ export default function UserDisplay(){
         //Gets an array of local users
         let localEmployeeArray: LocalEmployee[] =  []//localHandler.getLocalEmployees()
         //temp user for testing
-        const fakeLocalEmployee:LocalEmployee={ServerDAta: undefined,status:0}
+        const fakeEmployee:Employee={id: 0,isManager: false,fname: "",lname: "",username: "",password: ""}
+        const fakeLocalEmployee:LocalEmployee={serverData: fakeEmployee ,status:0}
         for(let i = 0; i < 40; i++){
             localEmployeeArray.push( fakeLocalEmployee)
         }
