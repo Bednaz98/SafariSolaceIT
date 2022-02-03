@@ -84,5 +84,6 @@ export default function EmployeeInfo(props: { employee: Employee }) {
         <BasicText text={`${warning}`}/>
         {/* <Button color={colorState} title='yoyoyo' onPress={()=>{}}></Button> */}
     </>)
+    
 }
 
