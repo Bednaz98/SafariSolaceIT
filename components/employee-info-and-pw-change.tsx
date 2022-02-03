@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
-import { appContext } from "../app-context";
+import { appContext } from "../classes/app-context";
 import Employee from "../entitites/user";
-import BasicButton from "../safari-solaces-tyletools/basicbutton";
-import BasicInputText from "../safari-solaces-tyletools/basicinputtext";
-import BasicText from "../safari-solaces-tyletools/basictext";
+import BasicButton from "../SafariSolaceStyleTools/basicbutton";
+import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
+import BasicText from "../SafariSolaceStyleTools/basictext";
+
 //import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
 
 export default function EmployeeInfo(props: { employee: Employee }) {

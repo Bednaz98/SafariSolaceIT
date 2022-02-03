@@ -14,7 +14,7 @@ export default interface AppContext{
   setPageIndex:Function
   user:Employee,
   setUser:Function,
-  employeeList:Employee[], 
+  employeeList:Employee[],
   setEmployeeList:Function,
   employeeIndex:number, 
   setEmployeeIndex:Function,
@@ -47,7 +47,9 @@ export default function App() {
     setPageIndex: setPageIndex,
     user: user,
     setUser: setUser,
+
     employeeList: employeeList,
+
     setEmployeeList: setEmployeeList,
     employeeIndex: employeeIndex,
     setEmployeeIndex:setEmployeeIndex,

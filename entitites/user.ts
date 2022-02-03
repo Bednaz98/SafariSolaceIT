@@ -1,4 +1,4 @@
-export default interface Employee{
+export interface Employee{
     id: number
     isManager: boolean
     fname: string
@@ -12,3 +12,16 @@ interface WorkLog{
     type: "CHEKIN" | "CHECKOUT" 
     timestamp: number
 }
+
+export enum Status{
+    unChanged,
+    add,
+    changed,
+    delete
+}
+export default interface EmployeeT{
+    ServerDAta:Employee
+    status:Status
+}
+
+let T:EmployeeT;

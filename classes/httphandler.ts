@@ -1,6 +1,8 @@
 import axios from "axios"
+import { useContext } from "react";
 import Employee from "../entitites/user";
 import EmployeeInterface from "../intrerfaces/employee-api-interface";
+import { appContext } from "./app-context";
 
 
 
@@ -8,6 +10,8 @@ export default class HttpHandler implements EmployeeInterface{
     private useURL:string = "http://localhost";
     private port:number = 3000;
     private devMode:boolean = false;
+    /////////////////////////////////////////////
+    private appContext = useContext(appContext);
 
     constructor(dev:boolean =false){
         this.devMode=dev;
@@ -31,25 +35,22 @@ export default class HttpHandler implements EmployeeInterface{
         fetchReturn = await axios.patch(`${this.getURL(),body}/EXAMPLE/${23456}`)
     }
 
-
-    async getAllEmployees(): Promise<Employee[]> {
+    async tryLogin(userName: string, password: string): Promise<boolean> {
+        let response = await axios.post(`${this.getURL(),{}}/EXAMPLE/`)
+        const user = response.data.user
+        
+        if(!user){ return undefined}
+        this.appContext.setUser(user)
+        this.appContext.setPageIndex(1)
+        return (user )
+    }
+    getServerAllEmployees(): Promise<Employee[]> {
         throw new Error("Method not implemented.");
     }
-    async changeEmployeePasswords(): Promise<Employee> {
-        throw new Error("Method not implemented.");
-    }
-    
-
-    async getAllManagers(): Promise<Employee[]> {
+    syncApp() {
         throw new Error("Method not implemented.");
     }
 
-    async getEmployee(ID: string): Promise<Employee> {
-        let body = {room:"there", owner:"hgrehre"}
-        const fetchReturn = await axios.patch(`${this.getURL(),body}/EXAMPLE/${ID}`)
-        fetchReturn.data
-        return
-    }
 
     
 }
