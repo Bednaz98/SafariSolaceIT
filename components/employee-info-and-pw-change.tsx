@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
 import { appContext } from "../classes/app-context";
-import Employee from "../entities/user";
+import {Employee} from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/basictext";
