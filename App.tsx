@@ -3,7 +3,9 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
-import LocalEmployee, { Employee } from './entitites/user';
+import UserDisplay from './components/display-users';
+import LocalEmployee, {Employee} from './entitites/user';
+import BasicButton from './SafariSolaceStyleTools/basicbutton';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
@@ -59,12 +61,18 @@ export default function App() {
     setSync: setSync
   }
 
-
+  
   function switchDisplay(){
     switch(pageIndx){
-      case 0: {return (<BasicText text={"Login in page"}/>)  }
-      case 1: {return (<BasicText text={"Main page"}/>)}
-      case 2: { return (<BasicText text={"User setting"}/>)}
+      case 0: {return (<View><BasicText text={"Login in page"}/></View>)  }
+      case 1: {return (
+                  <View>
+                    <BasicText text={"Main page"}/> 
+                    <BasicButton onPress={()=>{}} title={"Sync"}/>
+                    <UserDisplay/> 
+                    <BasicButton onPress={()=>{}} title={"Create Employee"}/>
+                  </View>)}
+      case 2: { return (<View><BasicText text={"User setting"}/></View>)}
     }
   }
   // This is the context theme for consistent styling

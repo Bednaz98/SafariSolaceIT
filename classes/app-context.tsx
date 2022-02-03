@@ -3,9 +3,6 @@ import LocalEmployee, { Employee } from "../entitites/user";
 import { Theme } from "../SafariSolaceStyleTools/colorstyle";
 
 
-
-
-
 export interface AppContextInterface{
     pageIndex:number
     setPageIndex:Function
@@ -21,10 +18,18 @@ export interface AppContextInterface{
     setSync:Function
 }
 
+
 export const initContext:AppContextInterface = {
     pageIndex:0,
     setPageIndex:()=>{},
-    user:{id:-1,isManager:false,fname:'',lname:'',username:'',password: ''} ,
+    user:{
+        id: 0,
+        isManager: false,
+        fname: '',
+        lname: '',
+        username: '',
+        password: '',
+    },
     setUser:()=>{},
     employeeList:[], 
     setEmployeeList:()=>{},

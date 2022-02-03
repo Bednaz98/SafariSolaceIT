@@ -1,25 +1,33 @@
-import {View} from "react-native";
+import { useState } from "react";
+import {Switch} from "react-native";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/basictext";
+import BasicModal from "../SafariSolaceStyleTools/basicmodal"
 
 
 export default function AddEmployee(){
+
+    const [fname, setFname] = useState("");
+    const [lname, setLname] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [isManager, setIsManager] = useState(false);
 
     function submit(){
         console.log("Click");
     }
 
-    return(<View>
-        <BasicText text="Add Employee"/>
+    return(<BasicModal openTitle="Add Employee">
         <BasicText text="First Name"/>
-        <BasicInputText value="" onChangeText={()=> {}} placeholder="John"/>
+        <BasicInputText value="" onChangeText={t => setFname(t)} placeholder="John"/>
         <BasicText text="Last Name"/>
-        <BasicInputText value="" onChangeText={()=> {}} placeholder="Smith"/>
+        <BasicInputText value="" onChangeText={t => setLname(t)} placeholder="Smith"/>
         <BasicText text="Username"/>
-        <BasicInputText value="" onChangeText={()=> {}} placeholder="jsmith"/>
+        <BasicInputText value="" onChangeText={t => setUsername(t)} placeholder="jsmith"/>
         <BasicText text="Password"/>
-        <BasicInputText value="" onChangeText={()=> {}} placeholder="********"/>
+        <BasicInputText value="" onChangeText={t => setPassword(t)} placeholder="********"/>
+        <Switch onValueChange={v => setIsManager(!v)} value={isManager}/>
         <BasicButton onPress={submit} title="Submit"/>
-    </View>)
+    </BasicModal>)
 }
