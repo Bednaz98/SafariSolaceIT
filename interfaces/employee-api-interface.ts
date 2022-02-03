@@ -1,4 +1,4 @@
-import Employee from "../entitites/user";
+import Employee from "../entities/user";
 
 
 export default interface UserInterface{

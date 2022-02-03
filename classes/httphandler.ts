@@ -1,6 +1,6 @@
 import axios from "axios"
-import Employee from "../entitites/user";
-import EmployeeInterface from "../intrerfaces/employee-api-interface";
+import Employee from "../entities/user";
+import EmployeeInterface from "../interfaces/employee-api-interface";
 
 
 

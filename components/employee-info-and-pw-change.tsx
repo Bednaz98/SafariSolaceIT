@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
-import { appContext } from "../app-context";
-import Employee from "../entitites/user";
-import BasicButton from "../safari-solaces-tyletools/basicbutton";
-import BasicInputText from "../safari-solaces-tyletools/basicinputtext";
-import BasicText from "../safari-solaces-tyletools/basictext";
+import { appContext } from "../classes/app-context";
+import Employee from "../entities/user";
+import BasicButton from "../SafariSolaceStyleTools/basicbutton";
+import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
+import BasicText from "../SafariSolaceStyleTools/basictext";
 //import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
 
 export default function EmployeeInfo(props: { employee: Employee }) {
@@ -46,13 +46,15 @@ export default function EmployeeInfo(props: { employee: Employee }) {
             //update passed down employee
             props.employee.password = pwStateClone;
 
-            //update global state
-            const employeesToUpdateClone = contextStates.employeesToUpdate;
-            employeesToUpdateClone.push(props.employee);
-            contextStates.setEmployeesToUpdate(employeesToUpdateClone);
+            //REPLACE with the http function//
+            // //update global state 
+            // const employeesToUpdateClone = contextStates.employeesToUpdate;
+            // employeesToUpdateClone.push(props.employee);
+            // contextStates.setEmployeesToUpdate(employeesToUpdateClone);
 
-            console.log('pw state is now', pwStateClone, 'the employeesToUpdate global state is now', contextStates.employeesToUpdate)
+            // console.log('pw state is now', pwStateClone, 'the employeesToUpdate global state is now', contextStates.employeesToUpdate)
 
+            console.log(props.employee.password)
             //close pw input UI and reset warning
             setWarning(" ")
             setpwUpdate(false)
@@ -71,8 +73,8 @@ export default function EmployeeInfo(props: { employee: Employee }) {
         {pwUpdateState ? (
             <View>
                 <BasicInputText
-                    value='derp'
-                    onChangeText={(text) => setpw(text)}
+                    value={pwState}
+                    onChangeText={setpw}
                     placeholder="new password"
                 ></BasicInputText>
                 <BasicButton title="save" onPress={() => savepwToContext()}/>
@@ -80,7 +82,7 @@ export default function EmployeeInfo(props: { employee: Employee }) {
         ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}
 
         <BasicText text={`${warning}`}/>
-        <Button color={colorState} title='yoyoyo' onPress={()=>{}}></Button>
+        {/* <Button color={colorState} title='yoyoyo' onPress={()=>{}}></Button> */}
     </>)
 }
 

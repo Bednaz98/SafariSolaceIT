@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Modal, View,StyleSheet, Button } from "react-native";
+import { Modal, View, StyleSheet } from "react-native";
 import BasicButton from "./basicbutton";
 import BasicText from "./basictext";
 import GetColor, { Color } from "./colorstyle";
 
 
 
-export default function BasicModal(props){
+export default function BasicModal(props:{child: any, openTitle: string}){
   let child = props.child
   const openTitle = props?.openTitle ?? "null open title"
   
