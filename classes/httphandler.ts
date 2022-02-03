@@ -35,11 +35,11 @@ export default class HttpHandler implements EmployeeInterface{
     async getAllEmployees(): Promise<Employee[]> {
         throw new Error("Method not implemented.");
     }
+    
     async changeEmployeePasswords(): Promise<Employee> {
         throw new Error("Method not implemented.");
     }
     
-
     async getAllManagers(): Promise<Employee[]> {
         throw new Error("Method not implemented.");
     }
