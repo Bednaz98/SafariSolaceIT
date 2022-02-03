@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
-import Employee from './entitites/user';
+import LocalEmployee, { Employee } from './entitites/user';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
@@ -33,7 +33,7 @@ export default function App() {
   //this is a dummy employee
   const intiUser:Employee = {id: 0,isManager: false,fname: '',lname: '',username: '',password: ''}
   const [user, setUser] = useState(intiUser);
-  const initEmployeeList:Employee[]= []
+  const initEmployeeList:LocalEmployee[]= []
   const [employeeList, setEmployeeList] = useState(initEmployeeList);
   const [employeeIndex, setEmployeeIndex] = useState(-1);
   const [theme, setTheme] = useState(Theme.default);

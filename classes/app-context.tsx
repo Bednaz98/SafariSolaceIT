@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import Employee from "../entitites/user";
+import LocalEmployee, { Employee } from "../entitites/user";
 import { Theme } from "../SafariSolaceStyleTools/colorstyle";
 
 
@@ -11,7 +11,7 @@ export interface AppContextInterface{
     setPageIndex:Function
     user:Employee ,
     setUser:Function,
-    employeeList:Employee[], 
+    employeeList:LocalEmployee[], 
     setEmployeeList:Function,
     employeeIndex:number , 
     setEmployeeIndex:Function,
