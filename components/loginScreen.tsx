@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { TextInput, View } from "react-native";
-import { CheckBox } from "react-native-elements";
+import { TextInput, View} from "react-native";
 import BasicText from "../SafariSolaceStyleTools/basictext";
 
 
@@ -41,7 +40,6 @@ export function LoginScreen(props){
         >
         </TextInput>
 
-        <CheckBox/>
 
         <button onClick={()=>{props.setUser(username,password)}}>Login</button>
 
