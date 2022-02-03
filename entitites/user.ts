@@ -7,7 +7,7 @@ export interface Employee{
     password: string
 }
 
-interface WorkLog{
+export interface WorkLog{
     wId: number
     type: "CHEKIN" | "CHECKOUT" 
     timestamp: number

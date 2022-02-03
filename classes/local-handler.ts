@@ -1,18 +1,19 @@
-import user from "../entitites/user";
+
+import {Employee} from "../entitites/user";
 import { localInterface } from "../intrerfaces/employee-api-interface";
 
 
 export default class LocalHandler implements localInterface {
-    getLocalEmployees(): user[] {
+    getLocalEmployees(): Employee[] {
         throw new Error("Method not implemented.");
     }
-    createEmployee(Employee: any) {
+    createEmployee(Employee: Employee) {
         throw new Error("Method not implemented.");
     }
-    deleteEmployee(Employee: any) {
+    deleteEmployee(Employee: Employee) {
         throw new Error("Method not implemented.");
     }
-    changePassword(Employee: any, passwordChange: any) {
+    changePassword(Employee: Employee, passwordChange: string) {
         throw new Error("Method not implemented.");
     }
     
