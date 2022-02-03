@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
 import UserDisplay from './components/display-users';
-import LocalEmployee, {Employee} from './entitites/user';
+import LocalEmployee, {Employee} from './entities/user';
 import BasicButton from './SafariSolaceStyleTools/basicbutton';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';

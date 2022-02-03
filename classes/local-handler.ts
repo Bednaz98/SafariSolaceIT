@@ -1,5 +1,5 @@
 
-import {Employee} from "../entitites/user";
+import {Employee} from "../entities/user";
 import { localInterface } from "../intrerfaces/employee-api-interface";
 
 
