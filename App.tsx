@@ -21,7 +21,7 @@ export default function App() {
 
   // this is for putting on the variables within the context //
   //##########################################################################  
-  const [pageIndx, setPageIndex] = useState(1);
+  const [pageIndx, setPageIndex] = useState(3);
   
   //dummy variables
   const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
@@ -58,8 +58,7 @@ export default function App() {
       case 0: {return (<View><LoginScreen/> </View>)  }
       case 1: {return (<View><HomePage/></View>)}
       case 2: { return (<View><BasicText text={"User setting"}/></View>)}
- 
-     //case 3: { return ( <View><EmployeeInfo employee={initEmployee}/></View> ) }
+      case 3: { return ( <View><EmployeeInfo employee={initEmployee}/></View> ) }
     }
   }
   // This is the context theme for consistent styling
