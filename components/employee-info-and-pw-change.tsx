@@ -1,25 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { View, Text, Button } from "react-native";
+import React, { useContext, useState } from "react";
+import { View} from "react-native";
 import { appContext } from "../classes/app-context";
-import LocalEmployee, {Employee} from "../entities/user";
+import LocalEmployee from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicModal from "../SafariSolaceStyleTools/basicmodal";
 import BasicText from "../SafariSolaceStyleTools/basictext";
 
-//import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
-
 export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     
-
-    // const [red, setRed] = useState<number>(0)
-    // const [green, setGreen] = useState<number>(0)
-    // const [blue, setBlue] = useState<number>(0)
-    // const [colorState, setColorState] = useState<string>(`rgb(0, 0, 0)`)
-    
-    // useEffect(()=>{setColorState(`rgb(${red}, ${green}, ${blue})`)}), [red, green, blue]
-    // // useEffect(()=>{setColorState(`rgb(${red}, 0, 0)`)}), [red]
-
     //local states
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
     const [pwState, setpw] = useState<string>(props.employee.serverData.password); //textinput reference
@@ -27,10 +16,6 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
 
     //global states
     const contextStates = useContext(appContext);
-
-    // const styles = <StyleTweaker setRed={setRed} setGreen={setGreen} setBlue={setBlue}/>
-    // console.log(colorState)
-    // //console.log('redState is', red)
 
     //add employee to state list of employees to update
     function savepwToContext() {
@@ -61,21 +46,19 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
         }
         else setWarning("You must enter a valid password between 7 and 1023783467234 characters, and include at least one symbol")
     }
-
-    function userIfo(){
-        return(<>
-
-            <BasicText text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
+    function renderPage(){
+        return (<>
+            <BasicText text={`Name: ${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
             <BasicText text={ `Username: ${ props.employee.serverData.username }` }/>
             <BasicText text={ `ID: ${ props.employee.serverData.id }`}/>
             <BasicText text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
-            {/* {styles} */}
-    
+
             {pwUpdateState ? (
                 <View>
                     <BasicInputText
-                        value='derp'
-                        onChangeText={(text) => setpw(text)}
+                        value={pwState}
+                        onChangeText={setpw}
+
                         placeholder="new password"
                     ></BasicInputText>
                     <BasicButton title="save" onPress={() => savepwToContext()}/>
@@ -88,11 +71,10 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     function getName(){
         return `${props.employee.serverData.fname} ${props.employee.serverData.lname}`
     }
+    
+    return(<>
+        <BasicModal child = {renderPage()} openTitle = {getName()} ></BasicModal>
+    </>)
 
-    return (
-        <BasicModal openTitle={getName()} child={userIfo()}/>
-    )
-
-        
 }
 
