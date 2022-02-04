@@ -6,10 +6,10 @@ import GetColor, { Color } from "./colorstyle";
 
 export default function BasicButton(props){
 
-    const {onPress, title} = props;
+    const {onPress, title, padding} = props;
 
     return(
-    <View style={{padding:3}}>
+    <View style={{paddingHorizontal:padding}}>
         <Button onPress={props.onPress} title={ props.title} color={GetColor(Color.Button)} // << main propers here
         //Extra attributes added
 
@@ -17,3 +17,5 @@ export default function BasicButton(props){
         /*this is the close of the button tag*//> 
     </View>)
 }
+
+// GetColor(Color.Button)

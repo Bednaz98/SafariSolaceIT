@@ -78,23 +78,23 @@ export default function App() {
                     <BasicButton onPress={()=>{}} title={"Create Employee"}/>
                   </View>)}
       case 2: { return (<View><BasicText text={"User setting"}/></View>)}
-      case 3: { return ( <BasicModal child = { <EmployeeInfo employee={initEmployee}/> }/> ) }
+    //   case 3: { return ( <BasicModal child = { <EmployeeInfo employee={initEmployee}/> }/> ) }
+      case 3: { return ( <EmployeeInfo employee={initEmployee}/> ) }
 
     }
   }
   // This is the context theme for consistent styling
   const themeContextObject:ThemeContextInterface = {theme:theme,setTheme:setTheme}
   
-  
+//   style={styles.container}
   return (
-    <View style={styles.container}>
-
+      
       <appContext.Provider value = {initContext}>
           <themeContext.Provider value = { themeContextObject }>
             {switchDisplay()}
         </themeContext.Provider>
       </appContext.Provider>
-    </View>
+
   );
 }
 

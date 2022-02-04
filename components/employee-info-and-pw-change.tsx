@@ -5,20 +5,15 @@ import LocalEmployee, {Employee} from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/basictext";
-import StyleTweaker from "../SafariSolaceStyleTools/style-tweaker";
+import StyleTweakerConstruction, { styleTweaker } from "../SafariSolaceStyleTools/style-tweaker-class";
 
 //import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
 
 export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     
 
-    const [red, setRed] = useState<number>(0)
-    const [green, setGreen] = useState<number>(0)
-    const [blue, setBlue] = useState<number>(0)
-    const [colorState, setColorState] = useState<string>(`rgb(0, 0, 0)`)
-    
-    useEffect(()=>{setColorState(`rgb(${red}, ${green}, ${blue})`)}), [red, green, blue]
-    // // useEffect(()=>{setColorState(`rgb(${red}, 0, 0)`)}), [red]
+    //slider styler class
+    let styler: styleTweaker = new StyleTweakerConstruction()
 
     //local states
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
@@ -27,10 +22,6 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
 
     //global states
     const contextStates = useContext(appContext);
-
-    const styleSliders = <StyleTweaker setRed={setRed} setGreen={setGreen} setBlue={setBlue}/>
-    // console.log(colorState)
-    // //console.log('redState is', red)
 
     //add employee to state list of employees to update
     function savepwToContext() {
@@ -48,11 +39,6 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
             //update passed down employee
             props.employee.serverData.password = pwStateClone;
 
-            // //update global state
-            // const employeesToUpdateClone = contextStates.employeesToUpdate;
-            // employeesToUpdateClone.push(props.employee);
-            // contextStates.setEmployeesToUpdate(employeesToUpdateClone);
-
             console.log('pw state is now', pwState)
 
             //close pw input UI and reset warning
@@ -64,11 +50,15 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
 
     return (<>
 
-        <BasicText text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
-        <BasicText text={ `Username: ${ props.employee.serverData.username }` }/>
-        <BasicText text={ `ID: ${ props.employee.serverData.id }`}/>
-        <BasicText text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
-        {styleSliders}
+        {styler.getSliders()}
+
+        <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: styler.getColorState()}}>
+            <BasicText text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
+            <BasicText text={ `Username: ${ props.employee.serverData.username }` }/>
+            <BasicText text={ `ID: ${ props.employee.serverData.id }`}/>
+            <BasicText text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
+        </View>
+        
 
         {pwUpdateState ? (
             <View>
@@ -79,11 +69,12 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
                 ></BasicInputText>
                 <BasicButton title="save" onPress={() => savepwToContext()}/>
             </View>
-        ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}
+        ) : <BasicButton padding={styler.getPadding()} title="Create New Password" onPress={() => setpwUpdate(true)}/>}
 
         <BasicText text={`${warning}`}/>
 
-        <Button color={colorState} title='YOYOYO' onPress={()=> {}} ></Button>
+        {/* <Text style={{backgroundColor: colorState, width: widthState, height: heightState}} >YOYOYO</Text> */}
+        <Text style={{textAlign:'center', backgroundColor: styler.getColorState(), width: styler.getWidth(), height: styler.getHeight(), alignSelf: 'center', paddingTop: styler.getHeight()/2}} >YOYOYO</Text>
     </>)
 }
 
