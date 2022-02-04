@@ -4,8 +4,10 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
 import UserDisplay from './components/display-users';
+import EmployeeInfo from './components/employee-info-and-pw-change';
 import LocalEmployee, {Employee, Status} from './entities/user';
 import BasicButton from './SafariSolaceStyleTools/basicbutton';
+import BasicModal from './SafariSolaceStyleTools/basicmodal';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
@@ -76,6 +78,8 @@ export default function App() {
                     <BasicButton onPress={()=>{}} title={"Create Employee"}/>
                   </View>)}
       case 2: { return (<View><BasicText text={"User setting"}/></View>)}
+      case 3: { return ( <BasicModal child = { <EmployeeInfo employee={initEmployee}/> }/> ) }
+
     }
   }
   // This is the context theme for consistent styling

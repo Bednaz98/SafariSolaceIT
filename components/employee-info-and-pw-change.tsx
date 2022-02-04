@@ -5,18 +5,19 @@ import LocalEmployee, {Employee} from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/basictext";
+import StyleTweaker from "../SafariSolaceStyleTools/style-tweaker";
 
 //import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
 
 export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     
 
-    // const [red, setRed] = useState<number>(0)
-    // const [green, setGreen] = useState<number>(0)
-    // const [blue, setBlue] = useState<number>(0)
-    // const [colorState, setColorState] = useState<string>(`rgb(0, 0, 0)`)
+    const [red, setRed] = useState<number>(0)
+    const [green, setGreen] = useState<number>(0)
+    const [blue, setBlue] = useState<number>(0)
+    const [colorState, setColorState] = useState<string>(`rgb(0, 0, 0)`)
     
-    // useEffect(()=>{setColorState(`rgb(${red}, ${green}, ${blue})`)}), [red, green, blue]
+    useEffect(()=>{setColorState(`rgb(${red}, ${green}, ${blue})`)}), [red, green, blue]
     // // useEffect(()=>{setColorState(`rgb(${red}, 0, 0)`)}), [red]
 
     //local states
@@ -27,7 +28,7 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     //global states
     const contextStates = useContext(appContext);
 
-    // const styles = <StyleTweaker setRed={setRed} setGreen={setGreen} setBlue={setBlue}/>
+    const styleSliders = <StyleTweaker setRed={setRed} setGreen={setGreen} setBlue={setBlue}/>
     // console.log(colorState)
     // //console.log('redState is', red)
 
@@ -67,7 +68,7 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
         <BasicText text={ `Username: ${ props.employee.serverData.username }` }/>
         <BasicText text={ `ID: ${ props.employee.serverData.id }`}/>
         <BasicText text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
-        {/* {styles} */}
+        {styleSliders}
 
         {pwUpdateState ? (
             <View>
@@ -81,6 +82,8 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
         ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}
 
         <BasicText text={`${warning}`}/>
+
+        <Button color={colorState} title='YOYOYO' onPress={()=> {}} ></Button>
     </>)
 }
 
