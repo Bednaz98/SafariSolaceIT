@@ -1,12 +1,15 @@
-import { Children, useState } from "react";
+import { useContext, useState } from "react";
 import {Switch} from "react-native";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/basictext";
 import BasicModal from "../SafariSolaceStyleTools/basicmodal"
+import LocalHandler from "../classes/local-handler";
+import { Employee } from "../entities/user";
+import { appContext } from "../classes/app-context";
 
 
-export default function AddEmployee( props){
+export default function AddEmployee(){
 
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
@@ -14,8 +17,16 @@ export default function AddEmployee( props){
     const [password, setPassword] = useState("");
     const [isManager, setIsManager] = useState(false);
 
+    const contextStates = useContext(appContext);
+    const localHandler = new LocalHandler();
+
     function submit(){
-        console.log("Click");
+        if(!fname || !lname || !username || !password){
+            alert("All fields must be filled out...")
+        } else {
+            const newEmployee: Employee = {id: contextStates.employeeList.length, fname: fname, lname: lname, isManager: isManager, username: username, password: password};
+            localHandler.createEmployee(newEmployee);
+        }
     }
 
     function addDisplay(){
