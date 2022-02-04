@@ -1,32 +1,40 @@
 
+import { Configuration, PublicClientApplication } from '@azure/msal-browser';
+import { AuthenticatedTemplate, MsalProvider, UnauthenticatedTemplate } from '@azure/msal-react';
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
-import UserDisplay from './components/display-users';
-import EmployeeInfo from './components/employee-info-and-pw-change';
 import HomePage from './components/homepage';
 import { LoginScreen } from './components/loginScreen';
 import LocalEmployee, {Employee, Status} from './entities/user';
-import BasicButton from './SafariSolaceStyleTools/basicbutton';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
 
+const configuration:Configuration = {
+  auth: {
+    clientId: "663099a6-a78e-4905-9aa1-f1a58912c0f6",
+    authority: "https://login.microsoftonline.com/874eb666-ca35-4e5d-bde2-379ff6a5f431",
+    redirectUri: "http://localhost:19006/"
+  },
+  cache: {
+    cacheLocation: "sessionStorage", // This configures where your cache will be stored
+    storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+  },
+}
 
-
-
+const client = new PublicClientApplication(configuration)
 
 export default function App() {
 
   // this is for putting on the variables within the context //
-  //##########################################################################  
-  const [pageIndx, setPageIndex] = useState(3);
+
+  const [pageIndx, setPageIndex] = useState(0);
   
   //dummy variables
   const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
-  const initEmployee: LocalEmployee = {status:Status.unChanged, serverData:{id: 1,isManager: false,fname: 'fname2',lname: 'lname2',username: 'username2',password: 'password2!'}}
-  const initEmployeeList:LocalEmployee[]= [initEmployee]
+  const initEmployeeList:LocalEmployee[]= []
 
   const [user, setUser] = useState(initUser);
   const [employeeList, setEmployeeList] = useState(initEmployeeList);
@@ -55,10 +63,8 @@ export default function App() {
   
   function switchDisplay(){
     switch(pageIndx){
-      case 0: {return (<View><LoginScreen/> </View>)  }
-      case 1: {return (<View><HomePage/></View>)}
-      case 2: { return (<View><BasicText text={"User setting"}/></View>)}
-      case 3: { return ( <View><EmployeeInfo employee={initEmployee}/></View> ) }
+      case 0: {return (<View><HomePage/></View>)}
+      case 1: { return (<View><BasicText text={"User setting"}/></View>)}
     }
   }
   // This is the context theme for consistent styling
@@ -70,7 +76,18 @@ export default function App() {
 
       <appContext.Provider value = {initContext}>
           <themeContext.Provider value = { themeContextObject }>
-            {switchDisplay()}
+          <MsalProvider instance={client}>
+
+      <UnauthenticatedTemplate>
+        <LoginScreen/>
+      </UnauthenticatedTemplate>
+
+      <AuthenticatedTemplate>
+      {switchDisplay()}
+      </AuthenticatedTemplate>
+
+    </MsalProvider>
+            
         </themeContext.Provider>
       </appContext.Provider>
     </View>

@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import { View} from "react-native";
 import { appContext } from "../classes/app-context";
+import LocalHandler from "../classes/local-handler";
 import LocalEmployee from "../entities/user";
+import { localInterface } from "../intrerfaces/employee-api-interface";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicModal from "../SafariSolaceStyleTools/basicmodal";
@@ -13,34 +15,28 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
     const [pwState, setpw] = useState<string>(props.employee.serverData.password); //textinput reference
     const [warning, setWarning] = useState<string>(" ")
-
+    
+    //local handler
+    const localhandler: localInterface = new LocalHandler()
+    
     //global states
     const contextStates = useContext(appContext);
-
-    //add employee to state list of employees to update
-    function savepwToContext() {
-        
+    
+    /** add employee to state list of employees to update */
+    function savepwToContext() {       
         //clean up the input
-        const pwStateClone = pwState.trim()
-        
+        const pwStateClone = pwState.trim()       
         //if password exists
         if (contextStates.employeeList.map((employee)=> employee.serverData.password).includes(pwStateClone) === true){
             setWarning("That password already exists, try another")
-        }
-        
+        }        
         //if password is valid
-        else if (pwStateClone.length > 7 && pwStateClone.match(/[!-/:-@[-`{-~]/) !== null){
+        else if (pwStateClone.length > 7 && pwStateClone.match(/[!-/:-@[-`{-~]/) !== null){           
             //update passed down employee
             props.employee.serverData.password = pwStateClone;
-
-            // //update global state
-            // const employeesToUpdateClone = contextStates.employeesToUpdate;
-            // employeesToUpdateClone.push(props.employee);
-            // contextStates.setEmployeesToUpdate(employeesToUpdateClone);
-
-            console.log('pw state is now', pwState)
-
+            
             //close pw input UI and reset warning
+            localhandler.changePassword(props.employee.serverData, pwStateClone)
             setWarning(" ")
             setpwUpdate(false)
         }
@@ -70,11 +66,9 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     }
     function getName(){
         return `${props.employee.serverData.fname} ${props.employee.serverData.lname}`
-    }
-    
+    }    
     return(<>
         <BasicModal child = {renderPage()} openTitle = {getName()} ></BasicModal>
     </>)
-
 }
 
