@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
 import UserDisplay from './components/display-users';
+import EmployeeInfo from './components/employee-info-and-pw-change';
 import LocalEmployee, {Employee, Status} from './entities/user';
 import BasicButton from './SafariSolaceStyleTools/basicbutton';
 import BasicText from './SafariSolaceStyleTools/basictext';
@@ -31,7 +32,7 @@ export default function App() {
 
   // this is for putting on the variables within the context //
   //##########################################################################  
-  const [pageIndx, setPageIndex] = useState(3);
+  const [pageIndx, setPageIndex] = useState(1);
   
   //dummy variables
   const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
@@ -76,6 +77,7 @@ export default function App() {
                     <BasicButton onPress={()=>{}} title={"Create Employee"}/>
                   </View>)}
       case 2: { return (<View><BasicText text={"User setting"}/></View>)}
+      case 3: { return ( <View><EmployeeInfo employee={initEmployee}/></View> ) }
     }
   }
   // This is the context theme for consistent styling
