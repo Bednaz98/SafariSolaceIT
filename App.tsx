@@ -5,6 +5,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
 import UserDisplay from './components/display-users';
 import EmployeeInfo from './components/employee-info-and-pw-change';
+import HomePage from './components/homepage';
+import { LoginScreen } from './components/loginScreen';
 import LocalEmployee, {Employee, Status} from './entities/user';
 import BasicButton from './SafariSolaceStyleTools/basicbutton';
 import BasicText from './SafariSolaceStyleTools/basictext';
@@ -24,6 +26,7 @@ export default function App() {
   //dummy variables
   const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
   const initEmployeeList:LocalEmployee[]= []
+  const initEmployee: LocalEmployee = {status:Status.unChanged, serverData:{id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}}
 
   const [user, setUser] = useState(initUser);
   const [employeeList, setEmployeeList] = useState(initEmployeeList);
@@ -55,7 +58,8 @@ export default function App() {
       case 0: {return (<View><LoginScreen/> </View>)  }
       case 1: {return (<View><HomePage/></View>)}
       case 2: { return (<View><BasicText text={"User setting"}/></View>)}
-      case 3: { return ( <View><EmployeeInfo employee={initEmployee}/></View> ) }
+ 
+     //case 3: { return ( <View><EmployeeInfo employee={initEmployee}/></View> ) }
     }
   }
   // This is the context theme for consistent styling
