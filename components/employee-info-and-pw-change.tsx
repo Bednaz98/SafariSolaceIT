@@ -4,6 +4,7 @@ import { appContext } from "../classes/app-context";
 import LocalEmployee, {Employee} from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
+import BasicModal from "../SafariSolaceStyleTools/basicmodal";
 import BasicText from "../SafariSolaceStyleTools/basictext";
 
 //import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
@@ -61,26 +62,37 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
         else setWarning("You must enter a valid password between 7 and 1023783467234 characters, and include at least one symbol")
     }
 
-    return (<>
+    function userIfo(){
+        return(<>
 
-        <BasicText text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
-        <BasicText text={ `Username: ${ props.employee.serverData.username }` }/>
-        <BasicText text={ `ID: ${ props.employee.serverData.id }`}/>
-        <BasicText text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
-        {/* {styles} */}
+            <BasicText text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
+            <BasicText text={ `Username: ${ props.employee.serverData.username }` }/>
+            <BasicText text={ `ID: ${ props.employee.serverData.id }`}/>
+            <BasicText text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
+            {/* {styles} */}
+    
+            {pwUpdateState ? (
+                <View>
+                    <BasicInputText
+                        value='derp'
+                        onChangeText={(text) => setpw(text)}
+                        placeholder="new password"
+                    ></BasicInputText>
+                    <BasicButton title="save" onPress={() => savepwToContext()}/>
+                </View>
+            ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}
+    
+            <BasicText text={`${warning}`}/>
+        </>)
+    }
+    function getName(){
+        return `${props.employee.serverData.fname} ${props.employee.serverData.lname}`
+    }
 
-        {pwUpdateState ? (
-            <View>
-                <BasicInputText
-                    value='derp'
-                    onChangeText={(text) => setpw(text)}
-                    placeholder="new password"
-                ></BasicInputText>
-                <BasicButton title="save" onPress={() => savepwToContext()}/>
-            </View>
-        ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}
+    return (
+        <BasicModal openTitle={getName()} child={userIfo()}/>
+    )
 
-        <BasicText text={`${warning}`}/>
-    </>)
+        
 }
 
