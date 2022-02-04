@@ -2,6 +2,25 @@
 # yarn lockfile v1
 
 
+"@azure/msal-browser@^2.21.0":
+  "integrity" "sha512-y+oAUJJ0m7gRUT505iGT4SDXktrRzOE3HZC0+nQyHDI+3O7BKK5NjQUwD/4V8FNNyrhxEtLk99iwJEo61epinQ=="
+  "resolved" "https://registry.npmjs.org/@azure/msal-browser/-/msal-browser-2.21.0.tgz"
+  "version" "2.21.0"
+  dependencies:
+    "@azure/msal-common" "^6.0.0"
+
+"@azure/msal-common@^6.0.0":
+  "integrity" "sha512-Vva3snqmWPHJNDCBb4lz3D0rvZsi/0QikAxHvVFNwtNg5pP4NZE4U34tNiXN+m9KhlQFrZBPkE5rk7dIEOGcWw=="
+  "resolved" "https://registry.npmjs.org/@azure/msal-common/-/msal-common-6.0.0.tgz"
+  "version" "6.0.0"
+  dependencies:
+    "debug" "^4.1.1"
+
+"@azure/msal-react@^1.2.0":
+  "integrity" "sha512-4mOldymo7sLwrflwR04cojTx7X2HlS/h3tu4VKZaUV4Les91UG0V5CWtjWGDQnZCCW/EiJ0o3lYZsYKgSRoAKA=="
+  "resolved" "https://registry.npmjs.org/@azure/msal-react/-/msal-react-1.2.0.tgz"
+  "version" "1.2.0"
+
 "@babel/code-frame@^7.0.0":
   "integrity" "sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg=="
   "resolved" "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.16.7.tgz"
@@ -4446,7 +4465,7 @@
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
-"react-dom@>=17.0.1", "react-dom@17.0.1":
+"react-dom@^17.0.1", "react-dom@>=17.0.1":
   "integrity" "sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz"
   "version" "17.0.1"
@@ -4530,7 +4549,7 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.4.3.tgz"
   "version" "0.4.3"
 
-"react@^16.8.0 || ^17.0.0", "react@>=17.0.1", "react@17.0.1":
+"react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^17.0.1", "react@>=17.0.1", "react@17.0.1":
   "integrity" "sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.1.tgz"
   "version" "17.0.1"
