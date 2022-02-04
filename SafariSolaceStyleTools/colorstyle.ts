@@ -1,9 +1,6 @@
 import { useContext } from "react";
 import { themeContext } from "./themecontext";
 
-
-
-
 export enum Theme{
     default,
     other
