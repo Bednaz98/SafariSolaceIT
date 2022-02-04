@@ -1,4 +1,4 @@
-import { Employee } from "../entities/user";
+import LocalEmployee, { Employee } from "../entities/user";
 
 
 export default interface HttpInterface{
@@ -13,8 +13,10 @@ export default interface HttpInterface{
 }
 
 export interface localInterface{
+    /**used to update the local state of employees. Pass in the employee list from the server/HTTP request*/
+    asyncEmployees(EmployeeArray:Employee[])
     /**get all local employees*/
-    getLocalEmployees( ):Employee[]
+    getLocalEmployees( ):LocalEmployee[]
     /**Create a new employee that doesn't exist on the server*/ 
     createEmployee(Employee)
     /**mark a local employee for deleting*/

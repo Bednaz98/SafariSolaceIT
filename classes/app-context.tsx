@@ -6,16 +6,16 @@ import { Theme } from "../SafariSolaceStyleTools/colorstyle";
 export interface AppContextInterface{
     pageIndex:number
     setPageIndex:Function
-    user:Employee ,
-    setUser:Function,
-    employeeList:LocalEmployee[], 
-    setEmployeeList:Function,
-    employeeIndex:number , 
-    setEmployeeIndex:Function,
+    user:Employee,
+    setUser:React.Dispatch<React.SetStateAction<Employee>>,
+    employeeList:LocalEmployee[],
+    setEmployeeList:React.Dispatch<React.SetStateAction<LocalEmployee[]>>,
+    employeeIndex:number, 
+    setEmployeeIndex:React.Dispatch<React.SetStateAction<number>>,
     theme:Theme, 
-    setTheme:Function,
+    setTheme:React.Dispatch<React.SetStateAction<Theme>>,
     sync:boolean, 
-    setSync:Function
+    setSync:React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
