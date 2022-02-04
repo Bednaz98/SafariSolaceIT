@@ -1,14 +1,17 @@
-import { Configuration, PublicClientApplication } from "@azure/msal-browser";
-import { AuthenticatedTemplate, MsalProvider, UnauthenticatedTemplate } from "@azure/msal-react";
-import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
-import { appContext, AppContextInterface } from "./classes/app-context";
-import HomePage from "./components/homepage";
-import { LoginScreen } from "./components/loginScreen";
-import LocalEmployee, { Employee } from "./entities/user";
-import BasicText from "./SafariSolaceStyleTools/basictext";
-import { Theme } from "./SafariSolaceStyleTools/colorstyle";
-import { themeContext, ThemeContextInterface } from "./SafariSolaceStyleTools/themecontext";
+import React from 'react';
+import { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { appContext, AppContextInterface } from './classes/app-context';
+import UserDisplay from './components/display-users';
+import EmployeeInfo from './components/employee-info-and-pw-change';
+import HomePage from './components/homepage';
+import { LoginScreen } from './components/loginScreen';
+import LocalEmployee, {Employee, Status} from './entities/user';
+import BasicButton from './SafariSolaceStyleTools/basicbutton';
+import BasicText from './SafariSolaceStyleTools/basictext';
+import { Theme } from './SafariSolaceStyleTools/colorstyle';
+import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
+
 
 
 
@@ -29,7 +32,7 @@ const client = new PublicClientApplication(configuration)
 export default function App() {
 
   // this is for putting on the variables within the context //
-  //##########################################################################  
+
   const [pageIndx, setPageIndex] = useState(0);
   
   //dummy variables
