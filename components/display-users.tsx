@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 import LocalHandler from "../classes/local-handler";
 import LocalEmployee, { Employee } from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
+import BasicText from "../SafariSolaceStyleTools/basictext";
 import EmployeeInfo from "./employee-info-and-pw-change";
 
 
@@ -18,16 +19,10 @@ export default function UserDisplay(){
 
     function createDisplay():JSX.Element[]{
         //Gets an array of local users
-        let localEmployeeArray: LocalEmployee[] = []// localHandler.getLocalEmployees()
-        //temp user for testing =============================
-        const fakeEmployee:Employee={id: 0,isManager: false,fname: "Name",lname: "fake",username: "user",password: "pass"}
-        const fakeLocalEmployee:LocalEmployee={serverData: fakeEmployee ,status:0}
-        for(let i = 0; i < 40; i++){
-            localEmployeeArray.push( fakeLocalEmployee)
-        }
-        /// =======================================
+        let localEmployeeArray: LocalEmployee[] = localHandler.getLocalEmployees()
+
         // returns a default array if no users are found
-        if( !(localEmployeeArray.length >1)) {return [<></>]}
+        if( !(localEmployeeArray.length >1)) {return [<BasicText text={"No Employees found"}/>]}
         // maps each user to a component and returns the array
         return localEmployeeArray.map((e,i)=>{return <EmployeeInfo employee={e}/>})
     }
