@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
 import { appContext } from "../classes/app-context";
-import {Employee} from "../entities/user";
+import LocalEmployee, {Employee} from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/basictext";
 
 //import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
 
-export default function EmployeeInfo(props: { employee: Employee }) {
+export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     
 
     // const [red, setRed] = useState<number>(0)
@@ -21,7 +21,7 @@ export default function EmployeeInfo(props: { employee: Employee }) {
 
     //local states
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
-    const [pwState, setpw] = useState<string>(props.employee.password); //textinput reference
+    const [pwState, setpw] = useState<string>(props.employee.serverData.password); //textinput reference
     const [warning, setWarning] = useState<string>(" ")
 
     //global states
@@ -38,21 +38,21 @@ export default function EmployeeInfo(props: { employee: Employee }) {
         const pwStateClone = pwState.trim()
         
         //if password exists
-        if (contextStates.employeeList.map((employee)=> employee.password).includes(pwStateClone) === true){
+        if (contextStates.employeeList.map((employee)=> employee.serverData.password).includes(pwStateClone) === true){
             setWarning("That password already exists, try another")
         }
         
         //if password is valid
         else if (pwStateClone.length > 7 && pwStateClone.match(/[!-/:-@[-`{-~]/) !== null){
             //update passed down employee
-            props.employee.password = pwStateClone;
+            props.employee.serverData.password = pwStateClone;
 
-            //update global state
-            const employeesToUpdateClone = contextStates.employeesToUpdate;
-            employeesToUpdateClone.push(props.employee);
-            contextStates.setEmployeesToUpdate(employeesToUpdateClone);
+            // //update global state
+            // const employeesToUpdateClone = contextStates.employeesToUpdate;
+            // employeesToUpdateClone.push(props.employee);
+            // contextStates.setEmployeesToUpdate(employeesToUpdateClone);
 
-            console.log('pw state is now', pwStateClone, 'the employeesToUpdate global state is now', contextStates.employeesToUpdate)
+            console.log('pw state is now', pwState)
 
             //close pw input UI and reset warning
             setWarning(" ")
@@ -63,10 +63,10 @@ export default function EmployeeInfo(props: { employee: Employee }) {
 
     return (<>
 
-        <BasicText text={`${props.employee.fname} ${props.employee.lname}`}/>
-        <BasicText text={ `Username: ${ props.employee.username }` }/>
-        <BasicText text={ `ID: ${ props.employee.id }`}/>
-        <BasicText text={ `Manager? : ${ props.employee.isManager ? 'Yes':'No' }`}/>
+        <BasicText text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
+        <BasicText text={ `Username: ${ props.employee.serverData.username }` }/>
+        <BasicText text={ `ID: ${ props.employee.serverData.id }`}/>
+        <BasicText text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
         {/* {styles} */}
 
         {pwUpdateState ? (
@@ -81,7 +81,6 @@ export default function EmployeeInfo(props: { employee: Employee }) {
         ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}
 
         <BasicText text={`${warning}`}/>
-        <Button color={colorState} title='yoyoyo' onPress={()=>{}}></Button>
     </>)
 }
 

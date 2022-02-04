@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
 import UserDisplay from './components/display-users';
-import LocalEmployee, {Employee} from './entities/user';
+import LocalEmployee, {Employee, Status} from './entities/user';
 import BasicButton from './SafariSolaceStyleTools/basicbutton';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
@@ -31,11 +31,14 @@ export default function App() {
 
   // this is for putting on the variables within the context //
   //##########################################################################  
-  const [pageIndx, setPageIndex] = useState(1);
-  //this is a dummy employee
-  const intiUser:Employee = {id: 0,isManager: false,fname: '',lname: '',username: '',password: ''}
-  const [user, setUser] = useState(intiUser);
-  const initEmployeeList:LocalEmployee[]= []
+  const [pageIndx, setPageIndex] = useState(3);
+  
+  //dummy variables
+  const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
+  const initEmployee: LocalEmployee = {status: Status.unChanged, serverData:{id: 1, isManager: false,fname: 'fname2',lname: 'lname2',username: 'username2',password: 'password2!'}}
+
+  const [user, setUser] = useState(initUser);
+  const initEmployeeList:LocalEmployee[]= [initEmployee]
   const [employeeList, setEmployeeList] = useState(initEmployeeList);
   const [employeeIndex, setEmployeeIndex] = useState(-1);
   const [theme, setTheme] = useState(Theme.default);
