@@ -12,6 +12,7 @@ export default function BasicModal(props){
   
 
   const [show, setShow] = useState(false);
+
   const styles = StyleSheet.create({
     modalView: {
       flexDirection:"column",

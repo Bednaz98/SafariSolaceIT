@@ -58,6 +58,7 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
                     <BasicInputText
                         value={pwState}
                         onChangeText={setpw}
+
                         placeholder="new password"
                     ></BasicInputText>
                     <BasicButton title="save" onPress={() => savepwToContext()}/>
@@ -74,5 +75,6 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     return(<>
         <BasicModal child = {renderPage()} openTitle = {getName()} ></BasicModal>
     </>)
+
 }
 

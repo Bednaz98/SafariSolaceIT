@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useContext } from 'react';
+
+import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
@@ -12,20 +12,7 @@ import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
 
 
-export default interface AppContext{
-  pageIndex:number
-  setPageIndex:Function
-  user:Employee,
-  setUser:Function,
-  employeeList:Employee[],
-  setEmployeeList:Function,
-  employeeIndex:number, 
-  setEmployeeIndex:Function,
-  theme:Theme, 
-  setTheme:Function,
-  sync:boolean, 
-  setSync:Function
-}
+
 
 
 export default function App() {
@@ -36,10 +23,9 @@ export default function App() {
   
   //dummy variables
   const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
-  const initEmployee: LocalEmployee = {status: Status.unChanged, serverData:{id: 1, isManager: false,fname: 'fname2',lname: 'lname2',username: 'username2',password: 'password2!'}}
+  const initEmployeeList:LocalEmployee[]= []
 
   const [user, setUser] = useState(initUser);
-  const initEmployeeList:LocalEmployee[]= [initEmployee]
   const [employeeList, setEmployeeList] = useState(initEmployeeList);
   const [employeeIndex, setEmployeeIndex] = useState(-1);
   const [theme, setTheme] = useState(Theme.default);
@@ -53,9 +39,7 @@ export default function App() {
     setPageIndex: setPageIndex,
     user: user,
     setUser: setUser,
-
     employeeList: employeeList,
-
     setEmployeeList: setEmployeeList,
     employeeIndex: employeeIndex,
     setEmployeeIndex:setEmployeeIndex,
@@ -68,14 +52,8 @@ export default function App() {
   
   function switchDisplay(){
     switch(pageIndx){
-      case 0: {return (<View><BasicText text={"Login in page"}/></View>)  }
-      case 1: {return (
-                  <View>
-                    <BasicText text={"Main page"}/> 
-                    <BasicButton onPress={()=>{}} title={"Sync"}/>
-                    <UserDisplay/> 
-                    <BasicButton onPress={()=>{}} title={"Create Employee"}/>
-                  </View>)}
+      case 0: {return (<View><LoginScreen/> </View>)  }
+      case 1: {return (<View><HomePage/></View>)}
       case 2: { return (<View><BasicText text={"User setting"}/></View>)}
       case 3: { return ( <View><EmployeeInfo employee={initEmployee}/></View> ) }
     }

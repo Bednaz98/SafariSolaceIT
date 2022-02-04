@@ -9,7 +9,7 @@ export default function BasicButton(props){
     const {onPress, title} = props;
 
     return(
-    <View style={{padding:3}}>
+    <View style={{padding:3 }}>
         <Button onPress={props.onPress} title={ props.title} color={GetColor(Color.Button)} // << main propers here
         //Extra attributes added
 

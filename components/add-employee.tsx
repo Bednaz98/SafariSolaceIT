@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Children, useState } from "react";
 import {Switch} from "react-native";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
@@ -6,7 +6,7 @@ import BasicText from "../SafariSolaceStyleTools/basictext";
 import BasicModal from "../SafariSolaceStyleTools/basicmodal"
 
 
-export default function AddEmployee(){
+export default function AddEmployee( props){
 
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
@@ -18,7 +18,8 @@ export default function AddEmployee(){
         console.log("Click");
     }
 
-    return(<BasicModal openTitle="Add Employee">
+    function addDisplay(){
+        return(<>
         <BasicText text="First Name"/>
         <BasicInputText value="" onChangeText={t => setFname(t)} placeholder="John"/>
         <BasicText text="Last Name"/>
@@ -29,5 +30,9 @@ export default function AddEmployee(){
         <BasicInputText value="" onChangeText={t => setPassword(t)} placeholder="********"/>
         <Switch onValueChange={v => setIsManager(!v)} value={isManager}/>
         <BasicButton onPress={submit} title="Submit"/>
-    </BasicModal>)
+        </>)
+    }
+
+    return(
+    <BasicModal openTitle="Add Employee" child={addDisplay()}/>)
 }

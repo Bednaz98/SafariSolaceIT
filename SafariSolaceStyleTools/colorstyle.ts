@@ -68,3 +68,26 @@ export default function GetColor(colorType:Color){
     }
 
 }
+
+
+
+export enum PlatformType{
+    web,
+    ios,
+    android
+}
+
+function getFormateTheme(){
+    const context = useContext(themeContext);
+    const platform:PlatformType = PlatformType.web;
+
+    switch(context.setTheme){
+        default:{
+            switch(platform){
+                case PlatformType.web:{  }
+            }
+        }
+
+
+    }
+}
