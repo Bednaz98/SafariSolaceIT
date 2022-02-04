@@ -25,8 +25,8 @@ export default function App() {
   
   //dummy variables
   const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
-  const initEmployeeList:LocalEmployee[]= []
-  const initEmployee: LocalEmployee = {status:Status.unChanged, serverData:{id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}}
+  const initEmployee: LocalEmployee = {status:Status.unChanged, serverData:{id: 1,isManager: false,fname: 'fname2',lname: 'lname2',username: 'username2',password: 'password2!'}}
+  const initEmployeeList:LocalEmployee[]= [initEmployee]
 
   const [user, setUser] = useState(initUser);
   const [employeeList, setEmployeeList] = useState(initEmployeeList);
