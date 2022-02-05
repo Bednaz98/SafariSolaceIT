@@ -11,13 +11,14 @@ export default function SettingsPage(prop) {
   instance.enableAccountStorageEvents();
 
   instance.addEventCallback((message: EventMessage) => {
-    if (message.eventType === EventType.LOGOUT_SUCCESS) {
+    if (message.eventType === EventType.LOGOUT_FAILURE) {
       prop.setPage(0);
-    }
+    } 
     });
 
   function logout() {
-    instance.logoutPopup();
+    instance.logout();
+    prop.setPage(0);
   } 
 
     return (
