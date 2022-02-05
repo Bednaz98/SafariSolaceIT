@@ -1,4 +1,3 @@
-
 import { Configuration, PublicClientApplication } from '@azure/msal-browser';
 import { AuthenticatedTemplate, MsalProvider, UnauthenticatedTemplate } from '@azure/msal-react';
 import React from 'react';
@@ -6,7 +5,9 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
 import HomePage from './components/homepage';
+import LoadingScreen from './components/loadingScreen';
 import { LoginScreen } from './components/loginScreen';
+import UnAuthScreen from './components/unAuthScreen';
 import LocalEmployee, {Employee, Status} from './entities/user';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
@@ -59,7 +60,6 @@ export default function App() {
     sync: sync,
     setSync: setSync
   }
-
   
   function switchDisplay(){
     switch(pageIndx){
@@ -79,11 +79,11 @@ export default function App() {
           <MsalProvider instance={client}>
 
       <UnauthenticatedTemplate>
-        <LoginScreen/>
+        <UnAuthScreen/>
       </UnauthenticatedTemplate>
 
       <AuthenticatedTemplate>
-      {switchDisplay()}
+        {switchDisplay()}
       </AuthenticatedTemplate>
 
     </MsalProvider>
