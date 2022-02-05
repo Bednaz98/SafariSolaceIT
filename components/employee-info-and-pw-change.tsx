@@ -6,7 +6,8 @@ import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicModal from "../SafariSolaceStyleTools/basicmodal";
 import BasicText from "../SafariSolaceStyleTools/basictext";
-import StyleTweakerConstruction, { styleTweaker } from "../SafariSolaceStyleTools/developer-styling-tools.tsx/style-tweaker";
+import StyleTweakerConstruction, { styleTweaker } from "../SafariSolaceStyleTools/developer-styling-tools.tsx/ssText";
+import getSliderStyling, { uiType } from "../SafariSolaceStyleTools/developer-styling-tools.tsx/UI-style-assignment";
 
 //import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
 
@@ -16,6 +17,7 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     //slider styler class
     let styler: styleTweaker = new StyleTweakerConstruction()
     let button: styleTweaker = new StyleTweakerConstruction()
+    const [toggleSliders, setToggleSliders] = useState<boolean>()
 
     //local states
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
@@ -49,8 +51,7 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
         }
         else setWarning("You must enter a valid password between 7 and 1023783467234 characters, and include at least one symbol")
     }
-
-   const [toggleSliders, setToggleSliders] = useState<boolean>()
+    
 
     return (<>
 
@@ -69,7 +70,7 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
         
 
         {pwUpdateState ? (
-            <View>
+            <View style={getSliderStyling('yo', uiType.View, button)}>
                 <BasicInputText
                     value='derp'
                     onChangeText={(text) => setpw(text)}
@@ -82,7 +83,8 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
         <BasicText text={`${warning}`}/>
 
         {/* <Text style={{backgroundColor: colorState, width: widthState, height: heightState}} >YOYOYO</Text> */}
-        <Text style={{ borderRadius: styler.getBorderRadius(), textAlign:'center', backgroundColor: styler.getColorState(), width: styler.getWidth(), height: styler.getHeight(), alignSelf: 'center', paddingTop: styler.getHeight()/2}} >YOYOYO</Text>
+        <Text key={'derp'} style={getSliderStyling('derp', uiType.Text, styler )} >YOYOYO</Text>
+        {/* { borderRadius: styler.getBorderRadius(), textAlign:'center', backgroundColor: styler.getColorState(), width: styler.getWidth(), height: styler.getHeight(), alignSelf: 'center', paddingTop: styler.getHeight()/2} */}
     </>)
 }
 

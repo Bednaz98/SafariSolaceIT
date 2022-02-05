@@ -1,7 +1,9 @@
 import Slider from "@react-native-community/slider";
 import React, {useEffect, useState } from "react";
 import { View } from "react-native";
-import SliderPopulator from "./slider-populator";
+import SliderPopulator from "./create-slider";
+import CreateSliderGroup, { setterFunctions } from "./create-slider-group";
+import { uiType } from "./UI-style-assignment";
 
 export interface styleTweaker{
     getSliders(): JSX.Element
@@ -9,7 +11,7 @@ export interface styleTweaker{
     getWidth(): number
     getHeight(): number
     getPadding(): number
-    getBorderRadius(): number
+    getBorderRadius(): number 
 }
 export default class StyleTweakerConstruction implements styleTweaker{
     private red: number = 0
@@ -29,8 +31,6 @@ export default class StyleTweakerConstruction implements styleTweaker{
     private setBorderRadius: Function
 
     private colorState: string = `rgb(${this.red}, ${this.green}, ${this.blue})`
-
-    private toggleSliders: string = 'flex'
    
     constructor(){
         const [colorState, setColorState] = useState<string>(`rgb(${this.red}, ${this.green}, ${this.blue})`)
@@ -59,16 +59,9 @@ export default class StyleTweakerConstruction implements styleTweaker{
         this.setBorderRadius = setBorderRadius
     }
     getSliders(){
-        return(           
-                <View style={{ justifyContent:'flex-start', alignItems: 'flex-start', alignContent: 'flex-start'}}>
-                    <SliderPopulator title={"red"} minVal={0} maxVal={255} callBack={this.setRed}/>
-                    <SliderPopulator title={"green"} minVal={0} maxVal={255} callBack={this.setGreen}/>
-                    <SliderPopulator title={"blue"} minVal={0} maxVal={255} callBack={this.setBlue}/>
-                    <SliderPopulator title={"height"} minVal={0} maxVal={500} callBack={this.setHeight}/>                
-                    <SliderPopulator title={"width"} minVal={0} maxVal={500} callBack={this.setWidth}/>
-                    <SliderPopulator title={"padding"} minVal={0} maxVal={1000} callBack={this.setPadding}/>  
-                    <SliderPopulator title={"borderRadius"} minVal={0} maxVal={50} callBack={this.setBorderRadius}/>                  
-                </View>       
+        const allSetters: setterFunctions = {setRed: this.setRed, setGreen: this.setGreen, setBlue: this.setBlue, setHeight: this.setHeight, setWidth: this.setWidth, setPadding: this.setPadding, setBorderRadius: this.setBorderRadius}
+        return(             
+                CreateSliderGroup(uiType.Text, allSetters)    
         )
     }
     getColorState(): string { return this.colorState }

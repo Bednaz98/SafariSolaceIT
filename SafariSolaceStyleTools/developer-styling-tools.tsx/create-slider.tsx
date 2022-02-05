@@ -1,7 +1,7 @@
 import Slider from "@react-native-community/slider";
 import { View, Text } from "react-native";
 
-export default function SliderPopulator(props:{title: string, minVal: number, maxVal: number, callBack: Function}){
+export default function CreateSlider(props:{title: string, minVal: number, maxVal: number, callBack: Function}){
 
     return(
         <View> <Text>{props.title}</Text>
