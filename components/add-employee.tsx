@@ -39,7 +39,8 @@ export default function AddEmployee(){
         <BasicInputText value="" onChangeText={t => setUsername(t)} placeholder="jsmith"/>
         <BasicText text="Password"/>
         <BasicInputText value="" onChangeText={t => setPassword(t)} placeholder="********"/>
-        <Switch onValueChange={v => setIsManager(!v)} value={isManager}/>
+        <BasicText text="Is person manager?"/>
+        <Switch onValueChange={() => setIsManager(v => !v)} value={isManager}/>
         <BasicButton onPress={submit} title="Submit"/>
         </>)
     }
