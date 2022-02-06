@@ -11,7 +11,6 @@ import UserDisplay from "./display-users";
 export default function HomePage(){
 
 
-
     return(<View>
         <BasicModal openTitle={"settings"} child={<></>}/>
         <BasicText text={"Main page"}/> 
