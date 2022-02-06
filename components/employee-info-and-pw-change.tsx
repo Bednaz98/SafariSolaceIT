@@ -57,7 +57,7 @@ export default function EmployeeInfo(props: { employee: Employee }) {
             <BasicText text={`Name: ${employee.fname} ${employee.lname}`}/>
             <BasicText text={ `Username: ${ employee.username }` }/>
             <BasicText text={ `ID: ${ employee.id }`}/>
-            <BasicText text={ `Manager? : ${ employee.isManager ? 'Yes':'No' }`}/>
+            <BasicText text={ `Manager: ${ employee.isManager ? 'Yes':'No' }`}/>
 
             {pwUpdateState ? (
                 <View>
