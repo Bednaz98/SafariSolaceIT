@@ -4,6 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
+import EmployeeInfo from './components/employee-info-and-pw-change';
 import HomePage from './components/homepage';
 import LoadingScreen from './components/loadingScreen';
 import { LoginScreen } from './components/loginScreen';
@@ -31,7 +32,7 @@ export default function App() {
 
   // this is for putting on the variables within the context //
 
-  const [pageIndx, setPageIndex] = useState(0);
+  const [pageIndx, setPageIndex] = useState(2);
   
   //dummy variables
   const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
@@ -65,6 +66,7 @@ export default function App() {
     switch(pageIndx){
       case 0: {return (<View><HomePage/></View>)}
       case 1: { return (<View><BasicText text={"User setting"}/></View>)}
+      case 2: { return (<View><EmployeeInfo employee={initUser}/></View>)}
     }
   }
   // This is the context theme for consistent styling
