@@ -10,6 +10,7 @@ import BasicModal from "../SafariSolaceStyleTools/basicmodal";
 import BasicText from "../SafariSolaceStyleTools/basictext";
 
 export default function EmployeeInfo(props: { employee: LocalEmployee }) {
+    const employee = props.employee
     
     //local states
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
@@ -22,7 +23,7 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     //global states
     const contextStates = useContext(appContext);
     
-    /** add employee to state list of employees to update */
+    /** check that the new password is valid and if it is, update the local handler  */
     function savepwToContext() {       
         //clean up the input
         const pwStateClone = pwState.trim()       
