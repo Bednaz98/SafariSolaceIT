@@ -4,19 +4,16 @@ import { appContext } from "../classes/app-context";
 import LocalEmployee, {Employee} from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
-import BasicModal from "../SafariSolaceStyleTools/basicmodal";
 import BasicText from "../SafariSolaceStyleTools/basictext";
-import StyleTweakerConstruction, { styleTweaker } from "../SafariSolaceStyleTools/developer-styling-tools.tsx/ssText";
-import getSliderStyling, { uiType } from "../SafariSolaceStyleTools/developer-styling-tools.tsx/UI-style-assignment";
+import ssTextConstruction, { sliderStyler } from "../SafariSolaceStyleTools/developer-styling-tools.tsx/ssText";
 
-//import StyleTweaker from "../safari-solaces-tyletools/styleTweaker";
 
 export default function EmployeeInfo(props: { employee: LocalEmployee }) {
     
 
     //slider styler class
-    let styler: styleTweaker = new StyleTweakerConstruction()
-    let button: styleTweaker = new StyleTweakerConstruction()
+    let styleText: sliderStyler = new ssTextConstruction()
+    //let button: styleTweaker = new StyleTweakerConstruction()
     const [toggleSliders, setToggleSliders] = useState<boolean>()
 
     //local states
@@ -57,20 +54,20 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
 
         <Button title='Toggle Developer Styling' onPress={()=>{setToggleSliders(!toggleSliders)}}></Button>        
         <View style={{flexDirection: 'row'}}>
-            {toggleSliders? button.getSliders() : null}
-            {toggleSliders? styler.getSliders() : null}
+            {/* {toggleSliders? button.getSliders() : null} */}
+            {toggleSliders? styleText.getSliders() : null}
         </View>
 
-        <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: styler.getColorState()}}>
-            <BasicText color={button.getColorState()} text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
-            <BasicText color={button.getColorState()} text={ `Username: ${ props.employee.serverData.username }` }/>
-            <BasicText color={button.getColorState()} text={ `ID: ${ props.employee.serverData.id }`}/>
-            <BasicText color={button.getColorState()} text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <BasicText color={styleText.getStyle()} text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
+            <BasicText color={styleText.getStyle()} text={ `Username: ${ props.employee.serverData.username }` }/>
+            <BasicText color={styleText.getStyle()} text={ `ID: ${ props.employee.serverData.id }`}/>
+            <BasicText color={styleText.getStyle()} text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
         </View>
         
 
         {pwUpdateState ? (
-            <View style={getSliderStyling('yo', uiType.View, button)}>
+            <View>
                 <BasicInputText
                     value='derp'
                     onChangeText={(text) => setpw(text)}
@@ -78,12 +75,12 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
                 ></BasicInputText>
                 <BasicButton title="save" onPress={() => savepwToContext()}/>
             </View>
-        ) : <BasicButton color= {button.getColorState()} padding={button.getPadding()} title="Create New Password" onPress={() => setpwUpdate(true)}/>}
+        ) : <BasicButton color= {'blue'} padding={2} title="Create New Password" onPress={() => setpwUpdate(true)}/>}
 
         <BasicText text={`${warning}`}/>
 
         {/* <Text style={{backgroundColor: colorState, width: widthState, height: heightState}} >YOYOYO</Text> */}
-        <Text key={'derp'} style={getSliderStyling('derp', uiType.Text, styler )} >YOYOYO</Text>
+        <Text key={'derp'} style={styleText.getStyle()} >YOYOYO</Text>
         {/* { borderRadius: styler.getBorderRadius(), textAlign:'center', backgroundColor: styler.getColorState(), width: styler.getWidth(), height: styler.getHeight(), alignSelf: 'center', paddingTop: styler.getHeight()/2} */}
     </>)
 }
