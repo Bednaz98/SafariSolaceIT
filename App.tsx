@@ -9,8 +9,9 @@ import LocalEmployee, {Employee, Status} from './entities/user';
 import BasicButton from './SafariSolaceStyleTools/basicbutton';
 import BasicModal from './SafariSolaceStyleTools/basicmodal';
 import BasicText from './SafariSolaceStyleTools/basictext';
-import { Theme } from './SafariSolaceStyleTools/colorstyle';
-import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
+import { ssContext, ssContextInit } from './SafariSolaceStyleTools/developer-styling-tools.tsx/sliderStyler-context';
+import { Theme } from './SafariSolaceStyleTools/styling/get-styles-by-theme-context';
+import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/styling/themecontext';
 
 
 export default interface AppContext{
@@ -88,12 +89,14 @@ export default function App() {
   
 //   style={styles.container}
   return (
-      
+      <ssContext.Provider value = {ssContextInit}>
       <appContext.Provider value = {initContext}>
           <themeContext.Provider value = { themeContextObject }>
             {switchDisplay()}
         </themeContext.Provider>
       </appContext.Provider>
+
+      </ssContext.Provider>
 
   );
 }

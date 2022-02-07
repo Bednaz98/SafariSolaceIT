@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { Theme } from "./colorstyle";
+import { Theme } from "./get-styles-by-theme-context";
 
 
 

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Modal, View,StyleSheet, Button } from "react-native";
+import { Modal, View,StyleSheet, Button, StyleProp, ViewStyle } from "react-native";
 import BasicButton from "./basicbutton";
 import BasicText from "./basictext";
-import GetColor, { Color } from "./colorstyle";
+import GetStyle, { key } from "./styling/get-styles-by-theme-context";
 
 
 
@@ -12,21 +12,6 @@ export default function BasicModal(props){
   
 
   const [show, setShow] = useState(false);
-  const styles = StyleSheet.create({
-    modalView: {
-      flexDirection:"column",
-      margin: 20,
-      backgroundColor:GetColor(Color.Modal),
-      borderRadius: 20,
-      padding: 35,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 0
-      }
-  }
-});
 
     return(
       <View>
@@ -35,8 +20,8 @@ export default function BasicModal(props){
           transparent={true}
           visible={show}
           onRequestClose={() => {setShow(!show)}}>
-          <View style={ {flex: 1, justifyContent: "center", alignItems: "center", marginTop: 22, backgroundColor:GetColor(Color.Modal)} }>
-            <View style={styles.modalView}>
+          <View style={ GetStyle(key.MainView) as StyleProp<ViewStyle>}>
+            <View style={GetStyle(key.ModalView) as StyleProp<ViewStyle>}>
 
               <View>
                 {child}

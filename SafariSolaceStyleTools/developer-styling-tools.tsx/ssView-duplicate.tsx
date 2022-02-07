@@ -1,17 +1,20 @@
 import Slider from "@react-native-community/slider";
-import React, { useState } from "react";
-import { View, Text } from "react-native";
+import React, {useEffect, useState } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import { key } from "../styling/get-styles-by-theme-context";
 import CreateSlider from "./create-slider";
+import SliderPopulator from "./create-slider";
 
 
 
 export interface sliderStyler{
     getSliders(): JSX.Element
+    getStyle(): Object
     getColors(value: number)
 }
-export default class ssTextConstruction implements sliderStyler{
-    private widthState: number
-    private heightState: number
+export default class ssViewConstruction implements sliderStyler{
+    private width: number
+    private height: number
     private paddingVertical: number
     private paddingHorizontal: number
 
@@ -24,35 +27,35 @@ export default class ssTextConstruction implements sliderStyler{
 
     private colorState: string 
     private justifyContent: string
-    private componentID: string
+    private componentID: key
    
     /** Create a slidergroup for a view
      *@param componentID: The unique name for the component you want to alter
     */
-     constructor(componentID: string){
+    constructor(componentID: key){
         this.componentID = componentID
 
-        const [colorState, setColorState] = useState<string>('black')
-        const [justifyContent, setJustifyContent] = useState<string>('center')
-        const [widthState, setWidth] = useState<number>(100)
-        const [heightState, setHeight] = useState<number>(10)
-        const [paddingVertical, setPaddingVertical] = useState<number>(0)
-        const [paddingHorizontal, setPaddingHorizontal] = useState<number>(0)
+        const [colorState, setColor] = useState<string>('white')
+        const [justifyContentState, setJustifyContent] = useState<string>('center')
+        const [widthState, setWidth] = useState<number>(50)
+        const [heightState, setHeight] = useState<number>(50)
+        const [paddingVerticalState, setPaddingVertical] = useState<number>(0)
+        const [paddingHorizontalState, setPaddingHorizontal] = useState<number>(0)
 
         //useEffect(()=>{setColorState(`rgb(${red}, ${green}, ${blue})`)}), [this.red, this.green, this.blue]
 
         this.colorState = colorState
-        this.widthState = widthState
-        this.heightState = heightState
-        this.paddingVertical = paddingVertical
-        this.paddingHorizontal = paddingHorizontal 
-        this.justifyContent = justifyContent
+        this.width = widthState
+        this.height = heightState
+        this.paddingVertical = paddingVerticalState
+        this.paddingHorizontal = paddingHorizontalState 
+        this.justifyContent = justifyContentState
 
         this.setWidth = setWidth
         this.setHeight = setHeight
         this.setPaddingVertical = setPaddingVertical
         this.setPaddingHorizontal = setPaddingHorizontal
-        this.setColorState = setColorState
+        this.setColorState = setColor
         this.setJustifyContent = setJustifyContent
     }
 
@@ -81,30 +84,29 @@ export default class ssTextConstruction implements sliderStyler{
                 <Text style={{textAlign: 'center'}}>{this.componentID}</Text>
                 <CreateSlider title={"color"} minVal={0} maxVal={3} callBack={this.getColors} />
                 <CreateSlider title={"justify content"} minVal={0} maxVal={2} callBack={this.getJustifyContent} />
-                <CreateSlider title={"font size"} minVal={1} maxVal={100} callBack={this.setHeight} />                
+                <CreateSlider title={"height"} minVal={0} maxVal={1000} callBack={this.setHeight} />                
                 <CreateSlider title={"width"} minVal={0} maxVal={1000} callBack={this.setWidth} />
-                <CreateSlider title={"paddingVertical"} minVal={0} maxVal={1000} callBack={this.setPaddingVertical} />  
+                <CreateSlider title={"paddingVertical"} minVal={0} maxVal={1000} callBack={this.setPaddingVertical}/>  
                 <CreateSlider title={"paddingHorizontal"} minVal={0} maxVal={1000} callBack={this.setPaddingHorizontal} />                  
             </View>
 
         )
     }
-    // getStyle(){   
-    //     return ({
-    //         fontSize: this.heightState, 
-    //         width: this.widthState, 
-    //         color: this.colorState, 
-    //         paddingVertical: this.paddingVertical, 
-    //         paddingHorizontal: this.paddingHorizontal,
-    //         justifyContent: this.justifyContent,
-    //         justifyitems: this.justifyContent,
-    //         justifySelf: this.justifyContent,
-    //         alignContent: "center",
-    //         alignItems: "center",
-    //         alignSelf: "center",
-    //         textAlign: "center",
-    //         textAlignVertical: "center",
-    //         borderRadius: 40 
-    //     })
-    // }
+    
+    getStyle(){   
+        return ({
+            width: this.width, 
+            height: this.height,
+            backgroundColor: this.colorState, 
+            paddingVertical: this.paddingVertical, 
+            paddingHorizontal: this.paddingHorizontal,
+            justifyContent: this.justifyContent,
+            justifyitems: this.justifyContent,
+            justifySelf: this.justifyContent,
+            alignContent: this.justifyContent,
+            alignItems: this.justifyContent,
+            alignSelf: this.justifyContent,
+            borderRadius: 40 
+        })
+    }
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { TextInput, View } from "react-native";
-import GetColor, { Color } from "./colorstyle";
+import { StyleProp, TextInput, View, ViewStyle } from "react-native";
+import GetStyle, { key } from "./styling/get-styles-by-theme-context";
 
 
 export default function BasicInputText(props){
@@ -14,7 +14,7 @@ export default function BasicInputText(props){
     const onContentSizeChange = props?.onContentSizeChange ?? ( ({ nativeEvent: { contentSize: { width, height } } }) => {} );
 
     return(
-    <View style={{backgroundColor:GetColor(Color.InputText), padding:3}}> 
+    <View style={GetStyle(key.MainView) as StyleProp<ViewStyle>}> 
         <TextInput value={value} onChangeText={onChangeText} placeholder={placeholder} 
         keyboardType='default' editable={editable} onChange={onChange} onContentSizeChange={onContentSizeChange}/>
     </View>)

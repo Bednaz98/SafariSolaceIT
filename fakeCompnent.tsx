@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { appContext } from "./classes/app-context";
 import HttpHandler from "./classes/httphandler";
-import { themeContext } from "./SafariSolaceStyleTools/themecontext";
+import { themeContext } from "./SafariSolaceStyleTools/styling/themecontext";
 
 
 export default function Component(){

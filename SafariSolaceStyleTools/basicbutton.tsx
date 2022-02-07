@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, NativeSyntheticEvent, NativeTouchEvent, View } from "react-native";
 import { v4 } from "uuid";
-import GetColor, { Color } from "./colorstyle";
 
 
 export default function BasicButton(props){

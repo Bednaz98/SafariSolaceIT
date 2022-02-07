@@ -1,20 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import { View, Text, Button, Modal } from "react-native";
+import React, { useContext, useState } from "react";
+import { View, Text, Button, StyleProp, ViewStyle } from "react-native";
 import { appContext } from "../classes/app-context";
-import LocalEmployee, {Employee} from "../entities/user";
+import LocalEmployee from "../entities/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/basictext";
 import ssTextConstruction, { sliderStyler } from "../SafariSolaceStyleTools/developer-styling-tools.tsx/ssText";
+import ssViewConstruction from "../SafariSolaceStyleTools/developer-styling-tools.tsx/ssView";
+import GetStyle, { key } from "../SafariSolaceStyleTools/styling/get-styles-by-theme-context";
 
 
 export default function EmployeeInfo(props: { employee: LocalEmployee }) {
-    
-
-    //slider styler class
-    let styleText: sliderStyler = new ssTextConstruction()
-    //let button: styleTweaker = new StyleTweakerConstruction()
-    const [toggleSliders, setToggleSliders] = useState<boolean>()
 
     //local states
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
@@ -52,17 +48,11 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
 
     return (<>
 
-        <Button title='Toggle Developer Styling' onPress={()=>{setToggleSliders(!toggleSliders)}}></Button>        
-        <View style={{flexDirection: 'row'}}>
-            {/* {toggleSliders? button.getSliders() : null} */}
-            {toggleSliders? styleText.getSliders() : null}
-        </View>
-
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <BasicText color={styleText.getStyle()} text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
-            <BasicText color={styleText.getStyle()} text={ `Username: ${ props.employee.serverData.username }` }/>
-            <BasicText color={styleText.getStyle()} text={ `ID: ${ props.employee.serverData.id }`}/>
-            <BasicText color={styleText.getStyle()} text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
+        <View style={GetStyle(key.MainView)}>
+            <BasicText style={GetStyle(key.MainView)} text={`${props.employee.serverData.fname} ${props.employee.serverData.lname}`}/>
+            <BasicText style={GetStyle(key.MainView)} text={ `Username: ${ props.employee.serverData.username }` }/>
+            <BasicText style={GetStyle(key.MainView)} text={ `ID: ${ props.employee.serverData.id }`}/>
+            <BasicText style={GetStyle(key.MainView)} text={ `Manager? : ${ props.employee.serverData.isManager ? 'Yes':'No' }`}/>
         </View>
         
 
@@ -77,10 +67,9 @@ export default function EmployeeInfo(props: { employee: LocalEmployee }) {
             </View>
         ) : <BasicButton color= {'blue'} padding={2} title="Create New Password" onPress={() => setpwUpdate(true)}/>}
 
-        <BasicText text={`${warning}`}/>
 
         {/* <Text style={{backgroundColor: colorState, width: widthState, height: heightState}} >YOYOYO</Text> */}
-        <Text key={'derp'} style={styleText.getStyle()} >YOYOYO</Text>
+        <Text key={'derp'} style={GetStyle(key.MainView)} >YOYOYO</Text>
         {/* { borderRadius: styler.getBorderRadius(), textAlign:'center', backgroundColor: styler.getColorState(), width: styler.getWidth(), height: styler.getHeight(), alignSelf: 'center', paddingTop: styler.getHeight()/2} */}
     </>)
 }

@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import LocalEmployee, { Employee } from "../entities/user";
-import { Theme } from "../SafariSolaceStyleTools/colorstyle";
+import { Theme } from "../SafariSolaceStyleTools/styling/get-styles-by-theme-context";
 
 
 export interface AppContextInterface{
