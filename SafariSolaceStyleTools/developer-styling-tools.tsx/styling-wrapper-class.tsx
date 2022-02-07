@@ -17,7 +17,7 @@ enum uiType{
 
 export default class SliderStylerWrapper implements SliderStylerWrapperInterface{
     private child: JSX.Element
-    private slyderStylers: sliderStyler[]
+    private slyderStylers: JSX.Element[]
     private toggleSliders: boolean
     private setToggleSliders: Function
 
@@ -40,7 +40,7 @@ export default class SliderStylerWrapper implements SliderStylerWrapperInterface
 
     createSliderGroup(componentID: key, type: uiType){
         switch(type){
-            case uiType.View : {const slider: sliderStyler = new ssViewConstruction(componentID); this.slyderStylers.push(slider)}
+            case uiType.View : {const slider: sliderStyler = new ssViewConstruction(componentID); this.slyderStylers.push(slider.getSliders())}
         }
 
     }

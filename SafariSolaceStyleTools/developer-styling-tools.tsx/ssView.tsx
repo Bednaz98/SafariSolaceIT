@@ -1,9 +1,10 @@
 import Slider from "@react-native-community/slider";
-import React, {useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { key } from "../styling/get-styles-by-theme-context";
 import CreateSlider from "./create-slider";
 import SliderPopulator from "./create-slider";
+import { slyderStylerContext, ssContext } from "./sliderStyler-context";
 
 
 
@@ -16,6 +17,7 @@ export default class ssViewConstruction implements sliderStyler{
     private height: number
     private paddingVertical: number
     private paddingHorizontal: number
+    private styleContext: slyderStylerContext
 
     private setWidth: Function
     private setHeight: Function
@@ -42,6 +44,8 @@ export default class ssViewConstruction implements sliderStyler{
         const [paddingHorizontalState, setPaddingHorizontal] = useState<number>(0)
 
         //useEffect(()=>{setColorState(`rgb(${red}, ${green}, ${blue})`)}), [this.red, this.green, this.blue]
+        const styleContext = useContext(ssContext)
+        this.styleContext = styleContext
 
         this.colorState = colorState
         this.width = widthState
@@ -61,7 +65,7 @@ export default class ssViewConstruction implements sliderStyler{
     getColors = (value: number) => {
 
         switch(Math.round(value)){
-            case 0: {this.setColorState('#ff0000')} break
+            case 0: {this.styleContext.setColor('#79eb96', this.componentID)} break
             case 1: {this.setColorState('#799a00')} break
             case 2: {this.setColorState('#799996')} break
             case 3: {this.setColorState('#79eb96')} break
@@ -77,7 +81,7 @@ export default class ssViewConstruction implements sliderStyler{
         }
     }
 
-    getSliders(){
+    getSliders(): JSX.Element{
         return(             
             <View style={{ justifyContent:'flex-start', alignItems: 'center', alignContent: 'flex-start'}}>
                 <Text style={{textAlign: 'center'}}>{this.componentID}</Text>
