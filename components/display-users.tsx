@@ -24,7 +24,7 @@ export default function UserDisplay(){
         // returns a default array if no users are found
         if( !(localEmployeeArray.length >1)) {return [<BasicText text={"No Employees found"}/>]}
         // maps each user to a component and returns the array
-        return localEmployeeArray.map((e,i)=>{return <EmployeeInfo employee={e.serverData}/>})
+        return localEmployeeArray.map((e,i)=>{return <EmployeeInfo key={e.serverData.id} employee={e.serverData}/>})
     }
 
 

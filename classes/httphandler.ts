@@ -1,19 +1,20 @@
 import axios from "axios"
 import { useContext } from "react";
-import Employee, {Status} from "../entities/user";
-import EmployeeInterface from "../intrerfaces/employee-api-interface";
+import LocalEmployee, {Employee, Status} from "../entities/user";
+import EmployeeInterface, { localInterface } from "../intrerfaces/employee-api-interface";
 import { appContext } from "./app-context";
+import LocalHandler from "./local-handler";
 
 
 
 export default class HttpHandler implements EmployeeInterface{
     private useURL:string = "http://20.124.74.192:3000";
-    private port:number = 3000;
-    private devMode:boolean = true;
+    private devMode:boolean = false;
     /////////////////////////////////////////////
-    private appContext = useContext(appContext);
+    private context = useContext(appContext);
+    private localHander: localInterface = new LocalHandler();
 
-    constructor(dev:boolean =false){
+    constructor(dev:boolean = false){
         this.devMode=dev;
     }
 
@@ -23,39 +24,32 @@ export default class HttpHandler implements EmployeeInterface{
         if(this.devMode){ return `https://c27c0348-eb0c-4ac0-afe2-101bc195d6a5.mock.pstmn.io`}
         else {return  this.useURL}
     }
-    /**basic axios calls*/
-    private async AxiosCall(ID){
-        let fetchReturn = await axios.get(this.getURL())
-        const Data = fetchReturn.data
 
-        let body = {}
-        fetchReturn = await axios.post(`${this.getURL(),body}/EXAMPLE/${ID}`)
-
-        body = {}
-        fetchReturn = await axios.patch(`${this.getURL(),body}/EXAMPLE/${23456}`)
-    }
-
-    async tryLogin(userName: string, password: string): Promise<boolean> {
-        let response = await axios.post(`${this.getURL(),{}}/EXAMPLE/`)
-        const user = response.data.user
-        
-        if(!user){ return undefined}
-        this.appContext.setUser(user)
-        this.appContext.setPageIndex(1)
-        return (user )
-    }
     async getServerAllEmployees(): Promise<Employee[]> {
         const response = await axios.get(`${this.getURL()}/employees`);
         const data: Employee[] = response.data;
-        data.forEach(e => {
-            e.status = Status.unChanged;
-        });
-        this.appContext.setEmployeeList({...data});
+        this.localHander.syncEmployees(data);
         return data;
     }
 
-    syncApp() {
-        throw new Error("Method not implemented.");
+    async syncApp() {
+        const usersToSave: LocalEmployee[] = this.context.employeeList.filter(e => e.status === Status.add);
+        usersToSave.forEach(async e => {
+            console.log(e.serverData);
+            console.log("Making post call for:", e.serverData)
+            const tempEmployee = {
+                isManager: e.serverData.isManager,
+                fname: e.serverData.fname,
+                lname: e.serverData.lname,
+                username: e.serverData.username,
+                password: e.serverData.password
+            };
+            const response = await axios.post(`${this.getURL()}/employees`, tempEmployee);
+            const currentEmployee: Employee = response.data; 
+            return(currentEmployee);
+        });
+        const serverEmployees = await this.getServerAllEmployees();
+        this.localHander.syncEmployees(serverEmployees);
+        this.context.setSync(true);
     }
-
 }
