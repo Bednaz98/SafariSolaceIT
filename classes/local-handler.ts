@@ -36,7 +36,9 @@ export default class LocalHandler implements localInterface {
         // make a temp Local Employee
         const NewLocalEmployee:LocalEmployee = { serverData: Employee,status: Status.add};
         //Using the spread operator to create a new object array and append the new user
-        this.Context.setEmployeeList([...this.Context.employeeList,NewLocalEmployee ]);
+        const newArray = this.Context.employeeList;
+        newArray.push(NewLocalEmployee);
+        this.Context.setEmployeeList(newArray);
     }
     deleteEmployee(Employee: Employee) {
         //mark the app as not synced with the server

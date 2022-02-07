@@ -26,19 +26,25 @@ export default function AddEmployee(){
         } else {
             const newEmployee: Employee = {id: contextStates.employeeList.length, fname: fname, lname: lname, isManager: isManager, username: username, password: password};
             localHandler.createEmployee(newEmployee);
+            alert("User added");
+            setFname("");
+            setLname("");
+            setUsername("");
+            setPassword("");
+            console.log(contextStates.employeeList);
         }
     }
 
     function addDisplay(){
         return(<>
         <BasicText text="First Name"/>
-        <BasicInputText value="" onChangeText={t => setFname(t)} placeholder="John"/>
+        <BasicInputText value={fname} onChangeText={t => setFname(t)} placeholder="John"/>
         <BasicText text="Last Name"/>
-        <BasicInputText value="" onChangeText={t => setLname(t)} placeholder="Smith"/>
+        <BasicInputText value={lname} onChangeText={t => setLname(t)} placeholder="Smith"/>
         <BasicText text="Username"/>
-        <BasicInputText value="" onChangeText={t => setUsername(t)} placeholder="jsmith"/>
+        <BasicInputText value={username} onChangeText={t => setUsername(t)} placeholder="jsmith"/>
         <BasicText text="Password"/>
-        <BasicInputText value="" onChangeText={t => setPassword(t)} placeholder="********"/>
+        <BasicInputText value={password} onChangeText={t => setPassword(t)} placeholder="********"/>
         <BasicText text="Is person manager?"/>
         <Switch onValueChange={() => setIsManager(v => !v)} value={isManager}/>
         <BasicButton onPress={submit} title="Submit"/>
