@@ -11,6 +11,7 @@ import BasicModal from './SafariSolaceStyleTools/basicmodal';
 import BasicText from './SafariSolaceStyleTools/basictext';
 import { ssContext, ssContextInit } from './SafariSolaceStyleTools/developer-styling-tools.tsx/sliderStyler-context';
 import { Theme } from './SafariSolaceStyleTools/styling/get-styles-by-theme-context';
+import StylingPlayground from './SafariSolaceStyleTools/styling/styling-playground';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/styling/themecontext';
 
 
@@ -80,7 +81,7 @@ export default function App() {
                   </View>)}
       case 2: { return (<View><BasicText text={"User setting"}/></View>)}
     //   case 3: { return ( <BasicModal child = { <EmployeeInfo employee={initEmployee}/> }/> ) }
-      case 3: { return ( <EmployeeInfo employee={initEmployee}/> ) }
+      case 3: { return ( <StylingPlayground child={<EmployeeInfo employee={initEmployee}/>}/> ) }
 
     }
   }

@@ -65,7 +65,7 @@ export default class ssViewConstruction implements sliderStyler{
     getColors = (value: number) => {
 
         switch(Math.round(value)){
-            case 0: {this.styleContext.setColor('#79eb96', this.componentID)} break
+            case 0: {this.styleContext.mainView = {color: '#79eb96'}} break
             case 1: {this.setColorState('#799a00')} break
             case 2: {this.setColorState('#799996')} break
             case 3: {this.setColorState('#79eb96')} break

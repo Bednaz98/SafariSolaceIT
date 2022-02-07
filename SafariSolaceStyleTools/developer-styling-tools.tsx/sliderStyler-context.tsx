@@ -12,12 +12,7 @@ export interface slyderStylerContext{
 export const ssContextInit : slyderStylerContext = {
     mainView: {color: 'red', backgroundColor: 'blue'},
     navView: {color: 'purple', backgroundColor: 'purple'},
-    setColor: (color: string, keys: key)=>{
-        switch(keys){
-            case key.MainView : {mainView.color = color} break
-            default : {}
-        }
-    }
+    setColor: ()=>{}
 }
 
 export const ssContext = createContext(ssContextInit)

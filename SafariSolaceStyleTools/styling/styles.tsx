@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { StyleSheet } from "react-native"
-import { ssContext } from "../developer-styling-tools.tsx/sliderStyler-context"
+import { ssContext} from "../developer-styling-tools.tsx/sliderStyler-context"
 import { sliderStyler } from "../developer-styling-tools.tsx/ssText"
 import { styleTweaker } from "../developer-styling-tools.tsx/ssTextInput"
 import ssViewConstruction from "../developer-styling-tools.tsx/ssView"
@@ -28,6 +28,9 @@ export function defaultTheme(keys: key, developerMode?: boolean){
 
     if (developerMode){
         const context = useContext(ssContext) ?? null
+        console.log("🚀 ~ file: styles.tsx ~ line 31 ~ defaultTheme ~ context", context)
+        
+        
         let chosenComponent: Object
 
         switch(keys){
