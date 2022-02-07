@@ -4,8 +4,6 @@ import { Theme } from "../SafariSolaceStyleTools/colorstyle";
 
 export default interface HttpInterface{
 
-    /**trying set the user information*/
-    tryLogin(userName:string, password:string):Promise<any>
     /**This is used to get all employees from the DAO*/
     getServerAllEmployees():Promise<any[]>
     /**Updates the server to sync with the local state*/
