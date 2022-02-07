@@ -4,6 +4,7 @@ import { Alert, View } from "react-native";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicText from "../SafariSolaceStyleTools/basictext";
 import { EventMessage, EventType } from "@azure/msal-browser";
+import { ThemeSelect } from "./themeSelector";
 
 export default function SettingsPage(prop) {
 
@@ -25,6 +26,7 @@ export default function SettingsPage(prop) {
         <View>
             <BasicText text={"Settings"} />
             <BasicButton onPress={() => {logout()}} title={"Logout"} />
+            <ThemeSelect/>
         </View>
     )
 }
