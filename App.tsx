@@ -4,7 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
-import EmployeeInfo from './components/employee-info-and-pw-change';
+//import EmployeeInfo from './components/employee-info-and-pw-change';
 import HomePage from './components/homepage';
 import LoadingScreen from './components/loadingScreen';
 import { LoginScreen } from './components/loginScreen';
