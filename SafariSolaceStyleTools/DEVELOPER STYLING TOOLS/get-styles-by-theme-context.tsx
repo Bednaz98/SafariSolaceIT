@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { key } from "../STYLING/keys";
+import { key } from "../STYLING/style-keys";
 import { defaultTheme } from "../STYLING/styles";
 import { themeContext } from "../STYLING/themecontext";
 
@@ -12,13 +12,8 @@ export enum Theme{
  * @param keys The enumeration key representing the type of style desired
  */
 export default function GetStyle(keys: key){
-    console.log("🚀 ~ file: get-styles-by-theme-context.tsx ~ line 27 ~ GetStyle ~ keys", keys)
+
     const context = useContext(themeContext);
-
-    for (let keys in key){
-        console.log('key is', keys)
-    }
-
 
     switch(context.theme){
         default:{

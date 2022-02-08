@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { StyleSheet } from "react-native"
 import { ssContext} from "../DEVELOPER STYLING TOOLS/ss-context"
-import { key } from "./keys"
+import { key } from "./style-keys"
 
 
 export const defaultThemeStyle = StyleSheet.create({

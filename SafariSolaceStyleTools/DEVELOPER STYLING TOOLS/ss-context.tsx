@@ -5,6 +5,7 @@ export interface ssContextInterface{
     setMainView: Function
     navView: Object
     setNavView: Function
+    setByKey: Function
 }
 
 // ssContextInit

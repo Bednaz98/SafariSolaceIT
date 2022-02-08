@@ -5,7 +5,7 @@ import LocalHandler from "../CLASSES/local-handler";
 import { Employee } from "../ENTITIES/user";
 import { localInterface } from "../INTERFACES/employee-api-interface";
 import GetStyle from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-styles-by-theme-context";
-import { key } from "../SafariSolaceStyleTools/STYLING/keys";
+import { key } from "../SafariSolaceStyleTools/STYLING/style-keys";
 import BasicButton from "../SafariSolaceStyleTools/UI TYPES/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/UI TYPES/basicinputtext";
 import BasicModal from "../SafariSolaceStyleTools/UI TYPES/basicmodal";
@@ -60,7 +60,7 @@ export default function EmployeeInfo(props: { employee: Employee }) {
             <BasicText text={ `Username: ${ employee.username }` }/>
             <BasicText text={ `ID: ${ employee.id }`}/>
             <BasicText text={ `Manager: ${ employee.isManager ? 'Yes':'No' }`}/>
-            <Text style={GetStyle(key.MainView)}>***************************TESTING****************************</Text>
+            <Text>***************************TESTING****************************</Text>
 
             {pwUpdateState ? (
                 <View>

@@ -1,17 +1,14 @@
 import Slider from "@react-native-community/slider";
-import React, {useContext, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import { View, Text } from "react-native";
-import { key } from "../../STYLING/keys";
+import { key } from "../../STYLING/style-keys";
 import CreateSlider from "../create-slider";
 import { ssContext, ssContextInterface } from "../ss-context";
-
-
-
 
 export interface ssGroupInterface{
     getSliders(): JSX.Element
     getColors(value: number)
-    updateContext(setter, value): void
+    updateContext(value: number, setter: Function): void
 }
 export default class ssViewConstruction implements ssGroupInterface{
     private width: number
@@ -39,6 +36,7 @@ export default class ssViewConstruction implements ssGroupInterface{
         const sscontext = useContext(ssContext)
         this.styleContext = sscontext
 
+
         //STATES
         const [colorState, setColor] = useState<string>('white')
         const [justifyContentState, setJustifyContent] = useState<string>('center')
@@ -47,6 +45,7 @@ export default class ssViewConstruction implements ssGroupInterface{
         const [paddingVerticalState, setPaddingVertical] = useState<number>(0)
         const [paddingHorizontalState, setPaddingHorizontal] = useState<number>(0)
 
+        useEffect(()=> {this.updateContext()}),[]
 
         this.colorState = colorState
         this.width = widthState
@@ -70,7 +69,7 @@ export default class ssViewConstruction implements ssGroupInterface{
             case 2: {this.setColorState('purple')} break
             case 3: {this.setColorState('yellow')} break
         }
-        this.styleContext.setMainView(this.getStyle())
+        this.updateContext()
     }
 
     getJustifyContent= (value: number) => {
@@ -80,11 +79,13 @@ export default class ssViewConstruction implements ssGroupInterface{
             case 1: {this.setJustifyContent('center')} break
             case 2: {this.setJustifyContent('flex-end')} break
         }
+        this.updateContext()
     }
 
-    updateContext = (value: number, setter?: Function) => {
-        setter(value)
-        this.styleContext.setMainView(this.getStyle())
+    updateContext = (value?: number, setter?: Function) => {
+        setter && setter(value);
+        this.styleContext.setByKey(this.componentID, this.getStyle())
+        console.log("🚀 ~ file: ssView.tsx ~ line 89 ~ ssViewConstruction ~ this.getStyle()", this.getStyle())
     }
 
     getSliders(): JSX.Element{
