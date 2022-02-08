@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { key } from "../styling/get-styles-by-theme-context";
+import { key } from "../STYLING/get-styles-by-theme-context";
 
 
 

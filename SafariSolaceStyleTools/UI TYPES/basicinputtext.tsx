@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleProp, TextInput, View, ViewStyle } from "react-native";
-import GetStyle, { key } from "./styling/get-styles-by-theme-context";
+import GetStyle, { key } from "../STYLING/get-styles-by-theme-context";
 
 
 export default function BasicInputText(props){

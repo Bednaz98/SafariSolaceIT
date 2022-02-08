@@ -1,8 +1,4 @@
 import { useContext } from "react";
-import { StyleSheet } from "react-native";
-import { ssContext } from "../developer-styling-tools.tsx/sliderStyler-context";
-import ssViewConstruction, { sliderStyler } from "../developer-styling-tools.tsx/ssView";
-import Dummy from "./dummy";
 import { defaultTheme } from "./styles";
 import { themeContext } from "./themecontext";
 

@@ -3,6 +3,7 @@ import { Theme } from "./get-styles-by-theme-context";
 
 
 
+
 /**this interface is used for intellisense for the 'Theme' useContext*/
 export interface ThemeContextInterface{
     theme:Theme

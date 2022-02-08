@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Button, View } from "react-native"
-import { key } from "../styling/get-styles-by-theme-context"
+import { key } from "../STYLING/get-styles-by-theme-context"
 import { sliderStyler } from "./ssText"
 import ssViewConstruction from "./ssView"
 
