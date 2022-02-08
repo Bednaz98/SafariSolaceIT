@@ -1,9 +1,6 @@
 import { useContext } from "react"
 import { StyleSheet } from "react-native"
 import { ssContext} from "../DEVELOPER STYLING TOOLS/ss-context"
-import { sliderStyler } from "../DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssText"
-import { styleTweaker } from "../DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssTextInput"
-import ssViewConstruction from "../DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssView"
 import { key } from "./keys"
 
 
