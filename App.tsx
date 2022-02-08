@@ -2,10 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { appContext, AppContextInterface } from './classes/app-context';
-import UserDisplay from './components/display-users';
-import EmployeeInfo from './components/employee-info-and-pw-change';
-import LocalEmployee, {Employee, Status} from './entities/user';
+import { appContext, AppContextInterface } from './CLASSES/app-context';
+import UserDisplay from './COMPONENTS/display-users';
+import EmployeeInfo from './COMPONENTS/employee-info-and-pw-change';
+import LocalEmployee, {Employee, Status} from './ENTITIES/user';
 import BasicButton from './SafariSolaceStyleTools/basicbutton';
 import BasicModal from './SafariSolaceStyleTools/basicmodal';
 import BasicText from './SafariSolaceStyleTools/basictext';
@@ -81,7 +81,7 @@ export default function App() {
                   </View>)}
       case 2: { return (<View><BasicText text={"User setting"}/></View>)}
     //   case 3: { return ( <BasicModal child = { <EmployeeInfo employee={initEmployee}/> }/> ) }
-      case 3: { return ( <StylingPlayground child={<EmployeeInfo employee={initEmployee}/>}/> ) }
+      case 3: { return ( <StylingPlayground child={<EmployeeInfo employee={initEmployee.serverData}/>}/> ) }
 
     }
   }

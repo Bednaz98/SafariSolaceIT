@@ -1,8 +1,8 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
 import { v4 } from "uuid";
-import LocalHandler from "../classes/local-handler";
-import LocalEmployee, { Employee } from "../entities/user";
+import LocalHandler from "../CLASSES/local-handler";
+import LocalEmployee, { Employee } from "../ENTITIES/user";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 
 

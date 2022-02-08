@@ -1,0 +1,22 @@
+{
+    "scm.defaultViewMode": "tree",
+    
+    "files.exclude":{
+        "**/node_modules": true,
+        "**/.expo": true,
+        "**/.expo-shared": true,
+        "**/assets": true,
+        ".gitignore": true,
+        "package.json": true,
+        "package-lock.json": true,
+        "README.md": true,
+        "tsconfig.json": true,
+        "app.json": true,
+        "**/.vscode": true,
+        "src/App.css": true,
+        "**/jest": true,
+        "yarn.lock": true,
+        "babel.config.js": true
+    }
+    
+}

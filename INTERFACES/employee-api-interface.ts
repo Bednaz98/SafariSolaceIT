@@ -1,4 +1,4 @@
-import { Employee } from "../entities/user";
+import { Employee } from "../ENTITIES/user";
 
 
 export default interface HttpInterface{

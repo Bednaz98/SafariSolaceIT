@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
-import EmployeeInfo from "../../components/employee-info-and-pw-change";
-import LocalEmployee, { Status } from "../../entities/user";
+import EmployeeInfo from "../../COMPONENTS/employee-info-and-pw-change";
+import LocalEmployee, { Status } from "../../ENTITIES/user";
 import { ssContext } from "../developer-styling-tools.tsx/sliderStyler-context";
 
 import { sliderStyler } from "../developer-styling-tools.tsx/ssText";
