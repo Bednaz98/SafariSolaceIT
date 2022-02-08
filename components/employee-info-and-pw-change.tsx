@@ -4,10 +4,10 @@ import { appContext } from "../CLASSES/app-context";
 import LocalHandler from "../CLASSES/local-handler";
 import { Employee } from "../ENTITIES/user";
 import { localInterface } from "../INTERFACES/employee-api-interface";
-import BasicButton from "../SafariSolaceStyleTools/basicbutton";
-import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
-import BasicModal from "../SafariSolaceStyleTools/basicmodal";
-import BasicText from "../SafariSolaceStyleTools/basictext";
+import BasicButton from "../SafariSolaceStyleTools/UI TYPES/basicbutton";
+import BasicInputText from "../SafariSolaceStyleTools/UI TYPES/basicinputtext";
+import BasicModal from "../SafariSolaceStyleTools/UI TYPES/basicmodal";
+import BasicText from "../SafariSolaceStyleTools/UI TYPES/basictext";
 
 /** Displays the employee info and contains password change functionality
  *  @param employee the employee that the admin wishes to view

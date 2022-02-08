@@ -3,32 +3,13 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './CLASSES/app-context';
-import UserDisplay from './COMPONENTS/display-users';
 import EmployeeInfo from './COMPONENTS/employee-info-and-pw-change';
 import LocalEmployee, {Employee, Status} from './ENTITIES/user';
-import BasicButton from './SafariSolaceStyleTools/basicbutton';
-import BasicModal from './SafariSolaceStyleTools/basicmodal';
-import BasicText from './SafariSolaceStyleTools/basictext';
+import BasicButton from './SafariSolaceStyleTools/UI TYPES/basicbutton';
 import { ssContext, ssContextInit } from './SafariSolaceStyleTools/developer-styling-tools.tsx/sliderStyler-context';
 import { Theme } from './SafariSolaceStyleTools/styling/get-styles-by-theme-context';
 import StylingPlayground from './SafariSolaceStyleTools/styling/styling-playground';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/styling/themecontext';
-
-
-export default interface AppContext{
-  pageIndex:number
-  setPageIndex:Function
-  user:Employee,
-  setUser:Function,
-  employeeList:Employee[],
-  setEmployeeList:Function,
-  employeeIndex:number, 
-  setEmployeeIndex:Function,
-  theme:Theme, 
-  setTheme:Function,
-  sync:boolean, 
-  setSync:Function
-}
 
 
 export default function App() {
@@ -67,24 +48,10 @@ export default function App() {
     sync: sync,
     setSync: setSync
   }
+ 
 
   
-  function switchDisplay(){
-    switch(pageIndx){
-      case 0: {return (<View><BasicText text={"Login in page"}/></View>)  }
-      case 1: {return (
-                  <View>
-                    <BasicText text={"Main page"}/> 
-                    <BasicButton onPress={()=>{}} title={"Sync"}/>
-                    <UserDisplay/> 
-                    <BasicButton onPress={()=>{}} title={"Create Employee"}/>
-                  </View>)}
-      case 2: { return (<View><BasicText text={"User setting"}/></View>)}
-    //   case 3: { return ( <BasicModal child = { <EmployeeInfo employee={initEmployee}/> }/> ) }
-      case 3: { return ( <StylingPlayground child={<EmployeeInfo employee={initEmployee.serverData}/>}/> ) }
 
-    }
-  }
   // This is the context theme for consistent styling
   const themeContextObject:ThemeContextInterface = {theme:theme,setTheme:setTheme}
   
@@ -93,7 +60,7 @@ export default function App() {
       <ssContext.Provider value = {ssContextInit}>
       <appContext.Provider value = {initContext}>
           <themeContext.Provider value = { themeContextObject }>
-            {switchDisplay()}
+            {<StylingPlayground child={<EmployeeInfo employee={initEmployee.serverData}/>}/>}
         </themeContext.Provider>
       </appContext.Provider>
 
@@ -101,12 +68,3 @@ export default function App() {
 
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#999',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Modal, View,StyleSheet, Button, StyleProp, ViewStyle } from "react-native";
+import GetStyle, { key } from "../styling/get-styles-by-theme-context";
 import BasicButton from "./basicbutton";
 import BasicText from "./basictext";
-import GetStyle, { key } from "./styling/get-styles-by-theme-context";
 
 
 
