@@ -1,9 +1,8 @@
 import Slider from "@react-native-community/slider";
-import React, {useContext, useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import GetStyle, { key } from "../STYLING/get-styles-by-theme-context";
+import React, {useContext, useState } from "react";
+import { View, Text } from "react-native";
+import { key } from "../styling/get-styles-by-theme-context";
 import CreateSlider from "./create-slider";
-import SliderPopulator from "./create-slider";
 import { slyderStylerContext, ssContext } from "./sliderStyler-context";
 
 
