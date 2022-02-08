@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, View,StyleSheet, Button, StyleProp, ViewStyle } from "react-native";
-import GetStyle, { key } from "../STYLING/get-styles-by-theme-context";
+import GetStyle, { key } from "../DEVELOPER STYLING TOOLS/get-styles-by-theme-context";
 import BasicButton from "./basicbutton";
 import BasicText from "./basictext";
 

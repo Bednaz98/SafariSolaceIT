@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Button, View } from "react-native"
-import { key } from "../styling/get-styles-by-theme-context"
-import { sliderStyler } from "./ssText"
-import ssViewConstruction from "./ssView"
+import { key } from "../STYLING/keys"
+import { sliderStyler } from "./SLIDER GROUPS/ssText"
+import ssViewConstruction from "./SLIDER GROUPS/ssView"
 
 
 interface SliderStylerWrapperInterface{

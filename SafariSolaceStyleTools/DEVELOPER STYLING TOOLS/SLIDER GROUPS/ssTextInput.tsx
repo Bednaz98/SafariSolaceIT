@@ -1,8 +1,7 @@
 import Slider from "@react-native-community/slider";
 import React, {useEffect, useState } from "react";
 import { View } from "react-native";
-import CreateSlider from "./create-slider";
-import SliderPopulator from "./create-slider";
+import CreateSlider from "../create-slider";
 
 export interface styleTweaker{
     getSliders(): JSX.Element

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
-import { ssContext } from "../DEVELOPER STYLING TOOLS/sliderStyler-context";
+import { ssContext } from "../DEVELOPER STYLING TOOLS/ss-context";
 
-import { sliderStyler } from "../DEVELOPER STYLING TOOLS/ssText";
-import ssViewConstruction from "../DEVELOPER STYLING TOOLS/ssView";
-import GetStyle, { key } from "./get-styles-by-theme-context";
+import { sliderStyler } from "../DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssText";
+import ssViewConstruction from "../DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssView";
+import { key } from "./keys";
 
 
 export default function StylingPlayground(props:{child: JSX.Element}){

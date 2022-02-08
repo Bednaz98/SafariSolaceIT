@@ -1,22 +1,24 @@
 import Slider from "@react-native-community/slider";
-import React, {useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import { key } from "../styling/get-styles-by-theme-context";
-import CreateSlider from "./create-slider";
-import SliderPopulator from "./create-slider";
+import React, {useContext, useState } from "react";
+import { View, Text } from "react-native";
+import { key } from "../../STYLING/keys";
+import CreateSlider from "../create-slider";
+import { ssContext, ssContextInterface } from "../ss-context";
 
 
 
-export interface sliderStyler{
+
+export interface ssGroupInterface{
     getSliders(): JSX.Element
-    getStyle(): Object
     getColors(value: number)
+    updateContext(setter, value): void
 }
-export default class ssViewConstruction implements sliderStyler{
+export default class ssViewConstruction implements ssGroupInterface{
     private width: number
     private height: number
     private paddingVertical: number
     private paddingHorizontal: number
+    private styleContext: ssContextInterface
 
     private setWidth: Function
     private setHeight: Function
@@ -34,7 +36,10 @@ export default class ssViewConstruction implements sliderStyler{
     */
     constructor(componentID: key){
         this.componentID = componentID
+        const sscontext = useContext(ssContext)
+        this.styleContext = sscontext
 
+        //STATES
         const [colorState, setColor] = useState<string>('white')
         const [justifyContentState, setJustifyContent] = useState<string>('center')
         const [widthState, setWidth] = useState<number>(50)
@@ -42,7 +47,6 @@ export default class ssViewConstruction implements sliderStyler{
         const [paddingVerticalState, setPaddingVertical] = useState<number>(0)
         const [paddingHorizontalState, setPaddingHorizontal] = useState<number>(0)
 
-        //useEffect(()=>{setColorState(`rgb(${red}, ${green}, ${blue})`)}), [this.red, this.green, this.blue]
 
         this.colorState = colorState
         this.width = widthState
@@ -60,13 +64,13 @@ export default class ssViewConstruction implements sliderStyler{
     }
 
     getColors = (value: number) => {
-
         switch(Math.round(value)){
-            case 0: {this.setColorState('#ff0000')} break
-            case 1: {this.setColorState('#799a00')} break
-            case 2: {this.setColorState('#799996')} break
-            case 3: {this.setColorState('#79eb96')} break
+            case 0: {this.setColorState('brown')} break
+            case 1: {this.setColorState('green')} break
+            case 2: {this.setColorState('purple')} break
+            case 3: {this.setColorState('yellow')} break
         }
+        this.styleContext.setMainView(this.getStyle())
     }
 
     getJustifyContent= (value: number) => {
@@ -78,21 +82,26 @@ export default class ssViewConstruction implements sliderStyler{
         }
     }
 
-    getSliders(){
+    updateContext = (value: number, setter?: Function) => {
+        setter(value)
+        this.styleContext.setMainView(this.getStyle())
+    }
+
+    getSliders(): JSX.Element{
         return(             
             <View style={{ justifyContent:'flex-start', alignItems: 'center', alignContent: 'flex-start'}}>
                 <Text style={{textAlign: 'center'}}>{this.componentID}</Text>
                 <CreateSlider title={"color"} minVal={0} maxVal={3} callBack={this.getColors} />
                 <CreateSlider title={"justify content"} minVal={0} maxVal={2} callBack={this.getJustifyContent} />
-                <CreateSlider title={"height"} minVal={0} maxVal={1000} callBack={this.setHeight} />                
-                <CreateSlider title={"width"} minVal={0} maxVal={1000} callBack={this.setWidth} />
-                <CreateSlider title={"paddingVertical"} minVal={0} maxVal={1000} callBack={this.setPaddingVertical}/>  
-                <CreateSlider title={"paddingHorizontal"} minVal={0} maxVal={1000} callBack={this.setPaddingHorizontal} />                  
+                <CreateSlider title={"height"} minVal={0} maxVal={1000} callBack={(val) => {this.updateContext(val, this.setHeight)}} />                
+                <CreateSlider title={"width"} minVal={0} maxVal={1000} callBack={(val) => {this.updateContext(val, this.setWidth)}} />
+                <CreateSlider title={"paddingVertical"} minVal={0} maxVal={1000} callBack={(val) => {this.updateContext(val, this.setPaddingVertical)}}/>  
+                <CreateSlider title={"paddingHorizontal"} minVal={0} maxVal={1000} callBack={(val) => {this.updateContext(val, this.setPaddingHorizontal)}} />                  
             </View>
 
         )
     }
-    
+
     getStyle(){   
         return ({
             width: this.width, 
@@ -106,7 +115,7 @@ export default class ssViewConstruction implements sliderStyler{
             alignContent: this.justifyContent,
             alignItems: this.justifyContent,
             alignSelf: this.justifyContent,
-            borderRadius: 40 
+            borderRadius: 10 
         })
     }
 }

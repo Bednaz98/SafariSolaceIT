@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import { StyleSheet } from "react-native"
-import { ssContext} from "../DEVELOPER STYLING TOOLS/sliderStyler-context"
-import { sliderStyler } from "../DEVELOPER STYLING TOOLS/ssText"
-import { styleTweaker } from "../DEVELOPER STYLING TOOLS/ssTextInput"
-import ssViewConstruction from "../DEVELOPER STYLING TOOLS/ssView"
-import { key } from "./get-styles-by-theme-context"
+import { ssContext} from "../DEVELOPER STYLING TOOLS/ss-context"
+import { sliderStyler } from "../DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssText"
+import { styleTweaker } from "../DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssTextInput"
+import ssViewConstruction from "../DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssView"
+import { key } from "./keys"
 
 
 export const defaultThemeStyle = StyleSheet.create({
@@ -27,19 +27,17 @@ export const defaultThemeStyle = StyleSheet.create({
 export function defaultTheme(keys: key, developerMode?: boolean){
 
     if (developerMode){
+
+        //use context
         const context = useContext(ssContext) ?? null
+
         console.log("🚀 ~ file: styles.tsx ~ line 31 ~ defaultTheme ~ context", context)
-        
-        
-        let chosenComponent: Object
 
         switch(keys){
-            case key.MainView : {chosenComponent = context.mainView } break
+            case key.MainView : {var chosenComponent = context.mainView } break
             default : {chosenComponent = context.mainView }
         }       
         return (chosenComponent)
     }
-    else{
-        return (defaultThemeStyle.MainView)
-    }
+    else{ return (defaultThemeStyle.MainView) }
 }
