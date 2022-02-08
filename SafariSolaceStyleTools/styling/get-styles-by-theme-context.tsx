@@ -24,6 +24,7 @@ export enum key{
  * @param keys The enumeration key representing the type of style desired
  */
 export default function GetStyle(keys: key){
+    console.log("🚀 ~ file: get-styles-by-theme-context.tsx ~ line 27 ~ GetStyle ~ keys", keys)
     const context = useContext(themeContext);
 
 

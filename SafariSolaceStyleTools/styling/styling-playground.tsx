@@ -4,13 +4,13 @@ import { ssContext } from "../DEVELOPER STYLING TOOLS/sliderStyler-context";
 
 import { sliderStyler } from "../DEVELOPER STYLING TOOLS/ssText";
 import ssViewConstruction from "../DEVELOPER STYLING TOOLS/ssView";
-import { key } from "./get-styles-by-theme-context";
+import GetStyle, { key } from "./get-styles-by-theme-context";
 
 
 export default function StylingPlayground(props:{child: JSX.Element}){
 
-    const context = useContext(ssContext)
-    console.log("🚀 ~ file: styling-playground.tsx ~ line 14 ~ StylingPlayground ~ context", context)
+    //const context = useContext(ssContext)
+    //console.log("🚀 ~ file: styling-playground.tsx ~ line 14 ~ StylingPlayground ~ context", context)
 
     //const [rerender]
     const newslider: sliderStyler = new ssViewConstruction(key.MainView)

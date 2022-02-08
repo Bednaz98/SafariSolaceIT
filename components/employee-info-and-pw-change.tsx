@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import { View} from "react-native";
+import { View, Text} from "react-native";
 import { appContext } from "../CLASSES/app-context";
 import LocalHandler from "../CLASSES/local-handler";
-import { Employee } from "../ENTITIES/user";
+import { Employee } from "../entities/user";
 import { localInterface } from "../INTERFACES/employee-api-interface";
+import GetStyle, { key } from "../SafariSolaceStyleTools/STYLING/get-styles-by-theme-context";
 import BasicButton from "../SafariSolaceStyleTools/UI TYPES/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/UI TYPES/basicinputtext";
 import BasicModal from "../SafariSolaceStyleTools/UI TYPES/basicmodal";
@@ -53,11 +54,12 @@ export default function EmployeeInfo(props: { employee: Employee }) {
 
     //render page
     function renderPage(){
-        return (<>
+        return (<View style={GetStyle(key.MainView)}>
             <BasicText text={`Name: ${employee.fname} ${employee.lname}`}/>
             <BasicText text={ `Username: ${ employee.username }` }/>
             <BasicText text={ `ID: ${ employee.id }`}/>
             <BasicText text={ `Manager: ${ employee.isManager ? 'Yes':'No' }`}/>
+            <Text style={GetStyle(key.MainView)}>***************************TESTING****************************</Text>
 
             {pwUpdateState ? (
                 <View>
@@ -69,7 +71,7 @@ export default function EmployeeInfo(props: { employee: Employee }) {
                     <BasicButton title="save" onPress={() => savepwToContext()}/>
                 </View>
             ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}             
-        </>)
+        </View>)
     }
 
     //get name
@@ -79,7 +81,7 @@ export default function EmployeeInfo(props: { employee: Employee }) {
     
     //component main return
     return(
-        <BasicModal child = {renderPage()} openTitle = {getName()} ></BasicModal>
+        renderPage()
     )
 }
 

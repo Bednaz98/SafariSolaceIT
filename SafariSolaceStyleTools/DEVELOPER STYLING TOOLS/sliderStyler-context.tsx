@@ -5,14 +5,15 @@ import { key } from "../STYLING/get-styles-by-theme-context";
 
 export interface slyderStylerContext{
     mainView: Object
-    navView: Object
-    setColor(color: string, keys: key)
+    setMainView: Function
 }
 
-export const ssContextInit : slyderStylerContext = {
-    mainView: {color: 'red', backgroundColor: 'blue'},
-    navView: {color: 'purple', backgroundColor: 'purple'},
-    setColor: ()=>{}
+const ssContextInit : slyderStylerContext = {
+    mainView: {color: 'red', backgroundColor: 'green'},
+    setMainView: ()=>{}
 }
 
+
+
+//creates a new context every time it is called
 export const ssContext = createContext(ssContextInit)

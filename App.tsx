@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './CLASSES/app-context';
 import EmployeeInfo from './COMPONENTS/employee-info-and-pw-change';
-import LocalEmployee, {Employee, Status} from './ENTITIES/user';
+import LocalEmployee, { Employee, Status } from './entities/user';
+import { slyderStylerContext, ssContext } from './SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/sliderStyler-context';
+import { Theme } from './SafariSolaceStyleTools/STYLING/get-styles-by-theme-context';
+import StylingPlayground from './SafariSolaceStyleTools/STYLING/styling-playground';
+import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/STYLING/themecontext';
 import BasicButton from './SafariSolaceStyleTools/UI TYPES/basicbutton';
-import { ssContext, ssContextInit } from './SafariSolaceStyleTools/developer-styling-tools.tsx/sliderStyler-context';
-import { Theme } from './SafariSolaceStyleTools/styling/get-styles-by-theme-context';
-import StylingPlayground from './SafariSolaceStyleTools/styling/styling-playground';
-import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/styling/themecontext';
+
 
 
 export default function App() {
@@ -28,6 +29,8 @@ export default function App() {
   const [employeeIndex, setEmployeeIndex] = useState(-1);
   const [theme, setTheme] = useState(Theme.default);
   const [sync, setSync] = useState(true);
+
+  const [mainView, setMainView] = useState<Object>({color: 'blue', backgroundColor: 'black'});
   //########################################################################## 
   
   // Initial Context for useState
@@ -48,6 +51,12 @@ export default function App() {
     sync: sync,
     setSync: setSync
   }
+
+  const ssContextInit : slyderStylerContext = {
+    mainView: mainView,
+    setMainView: setMainView
+}
+  console.log("🚀 ~ file: App.tsx ~ line 59 ~ App ~ ssContextInit", ssContextInit)
  
 
   
@@ -55,7 +64,7 @@ export default function App() {
   // This is the context theme for consistent styling
   const themeContextObject:ThemeContextInterface = {theme:theme,setTheme:setTheme}
   
-//   style={styles.container}
+  
   return (
       <ssContext.Provider value = {ssContextInit}>
       <appContext.Provider value = {initContext}>
