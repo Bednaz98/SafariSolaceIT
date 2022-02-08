@@ -6,7 +6,7 @@ export default function CreateSlider(props:{title: string, minVal: number, maxVa
 
     const [sliderVal, setSliderVal] = useState<number>(0)
     return(
-        <View> <Text>{props.title} {sliderVal}</Text>
+        <View> 
         <Slider
             step={props?.stepSize ?? 1}
             style={{width: 150, height: 20}}
@@ -19,3 +19,5 @@ export default function CreateSlider(props:{title: string, minVal: number, maxVa
         </View>
     )
 }
+
+{/* <Text>{props.title} {sliderVal}</Text> */}

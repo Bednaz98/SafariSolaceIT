@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
-import { ssContext } from "../developer-styling-tools.tsx/sliderStyler-context";
+import { ssContext } from "../DEVELOPER STYLING TOOLS/sliderStyler-context";
 
-import { sliderStyler } from "../developer-styling-tools.tsx/ssText";
-import ssViewConstruction from "../developer-styling-tools.tsx/ssView";
+import { sliderStyler } from "../DEVELOPER STYLING TOOLS/ssText";
+import ssViewConstruction from "../DEVELOPER STYLING TOOLS/ssView";
 import { key } from "./get-styles-by-theme-context";
 
 
