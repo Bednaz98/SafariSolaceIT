@@ -1,15 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React, { useContext } from 'react';
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { appContext, AppContextInterface } from './CLASSES/app-context';
 import EmployeeInfo from './COMPONENTS/employee-info-and-pw-change';
-import LocalEmployee, { Employee, Status } from './entities/user';
+import LocalEmployee, { Employee, Status } from './ENTITIES/user';
 import { slyderStylerContext, ssContext } from './SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/sliderStyler-context';
-import { Theme } from './SafariSolaceStyleTools/STYLING/get-styles-by-theme-context';
-import StylingPlayground from './SafariSolaceStyleTools/STYLING/styling-playground';
-import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/STYLING/themecontext';
-import BasicButton from './SafariSolaceStyleTools/UI TYPES/basicbutton';
+import { Theme } from './SafariSolaceStyleTools/styling/get-styles-by-theme-context';
+import StylingPlayground from './SafariSolaceStyleTools/styling/styling-playground';
+import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/styling/themecontext';
+
 
 
 
@@ -58,9 +57,6 @@ export default function App() {
 }
   console.log("🚀 ~ file: App.tsx ~ line 59 ~ App ~ ssContextInit", ssContextInit)
  
-
-  
-
   // This is the context theme for consistent styling
   const themeContextObject:ThemeContextInterface = {theme:theme,setTheme:setTheme}
   
@@ -72,7 +68,6 @@ export default function App() {
             {<StylingPlayground child={<EmployeeInfo employee={initEmployee.serverData}/>}/>}
         </themeContext.Provider>
       </appContext.Provider>
-
       </ssContext.Provider>
 
   );
