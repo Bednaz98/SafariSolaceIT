@@ -14,10 +14,14 @@ import BasicText from './SafariSolaceStyleTools/basictext';
 import { Theme } from './SafariSolaceStyleTools/colorstyle';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
 
+
+//663099a6-a78e-4905-9aa1-f1a58912c0f6 - Client
+//874eb666-ca35-4e5d-bde2-379ff6a5f431 - Tenant
+
 const configuration:Configuration = {
   auth: {
     clientId: "663099a6-a78e-4905-9aa1-f1a58912c0f6",
-    authority: "https://login.microsoftonline.com/874eb666-ca35-4e5d-bde2-379ff6a5f431",
+    authority: "https://login.microsoftonline.com/874eb666-ca35-4e5d-bde2-379ff6a5f431 ",
     redirectUri: "https://salmon-rock-0e75fe60f.1.azurestaticapps.net"
   },
   cache: {
