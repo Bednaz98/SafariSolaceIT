@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text} from "react-native";
 import { appContext } from "../CLASSES/app-context";
 import LocalHandler from "../CLASSES/local-handler";
 import { Employee } from "../ENTITIES/user";
 import { localInterface } from "../INTERFACES/employee-api-interface";
-import GetStyle from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-styles-by-theme-context";
+import GetStyle from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-style";
+import { ssContext, ssContextInterface } from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/ss-context";
 import { key } from "../SafariSolaceStyleTools/STYLING/style-keys";
 import BasicButton from "../SafariSolaceStyleTools/UI TYPES/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/UI TYPES/basicinputtext";
-import BasicModal from "../SafariSolaceStyleTools/UI TYPES/basicmodal";
 import BasicText from "../SafariSolaceStyleTools/UI TYPES/basictext";
 
 /** Displays the employee info and contains password change functionality
@@ -17,10 +17,14 @@ import BasicText from "../SafariSolaceStyleTools/UI TYPES/basictext";
 export default function EmployeeInfo(props: { employee: Employee }) {
 
     //prop alias
-    const employee = props.employee
+    const employee = props.employee //not a new address
 
     //global states
     const contextStates = useContext(appContext);
+    const sscontext: ssContextInterface = useContext(ssContext);
+    //const [rerender, setrerender] = useState(0)
+    //useEffect(()=>{setrerender(rerender + 1)},[sscontext])
+    useEffect(()=> {console.log('the child context changed and is:', sscontext.mainView)}, [sscontext.mainView])
     
     //local states
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
@@ -55,6 +59,7 @@ export default function EmployeeInfo(props: { employee: Employee }) {
 
     //render page
     function renderPage(){
+        console.log("CHILD (RE)RENDERED")
         return (<View style={GetStyle(key.MainView)}>
             <BasicText text={`Name: ${employee.fname} ${employee.lname}`}/>
             <BasicText text={ `Username: ${ employee.username }` }/>

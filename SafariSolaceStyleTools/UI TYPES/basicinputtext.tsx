@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleProp, TextInput, View, ViewStyle } from "react-native";
-import GetStyle from "../DEVELOPER STYLING TOOLS/get-styles-by-theme-context";
+import GetStyle from "../DEVELOPER STYLING TOOLS/get-style";
 import { key } from "../STYLING/style-keys";
 
 

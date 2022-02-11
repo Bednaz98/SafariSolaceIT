@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { key } from "../STYLING/style-keys";
-import { defaultTheme } from "../STYLING/styles";
+import { ssStyleSheet } from "../STYLING/ss-stylesheet";
 import { themeContext } from "../STYLING/themecontext";
 
 export enum Theme{
@@ -12,17 +12,18 @@ export enum Theme{
  * @param keys The enumeration key representing the type of style desired
  */
 export default function GetStyle(keys: key){
+    console.log("GET STYLES CALLED")
 
     const context = useContext(themeContext);
-
+    const developermode: boolean = true
     switch(context.theme){
         default:{
             switch(keys){
-                case key.MainView: {return defaultTheme(keys, true)} 
-                case key.NavView: { return  defaultTheme(keys)} 
-                case key.MenuButton: { return  defaultTheme(keys)}
-                case key.Modal: { return defaultTheme(keys)}
-                default: { return  defaultTheme(key.MainView)}
+                case key.MainView: {return ssStyleSheet(keys, developermode)} 
+                case key.NavView: { return ssStyleSheet(keys, developermode)} 
+                case key.MenuButton: { return ssStyleSheet(keys, developermode)}
+                case key.Modal: { return ssStyleSheet(keys, developermode)}
+                default: { return ssStyleSheet(key.MainView)}
             }
         }
     }

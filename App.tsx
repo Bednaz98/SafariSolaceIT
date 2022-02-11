@@ -14,6 +14,8 @@ export default function App(){
     const [mainViewState, setMainView] = useState<Object>()
     const [navViewState, setNavView] = useState<Object>()
 
+    useEffect(()=>{console.log("MAIN VIEW STATE CHANGED IN APP AND IS", mainViewState)}, [mainViewState])
+
     //context initializer
     const ssContextInit = {
         mainView: mainViewState,
@@ -24,18 +26,17 @@ export default function App(){
             switch(keys){
                 case key.MainView : {setMainView(style)} break
                 case key.NavView : {setNavView(style)} break
+                default : {setMainView(style)} break
             }
         }
     }
+
     
-    //dummy
-    const initUser:Employee = {id: 0,isManager: false,fname: 'fname',lname: 'lname',username: 'username',password: 'password1!'}
     
     return(
         <ssContext.Provider value = {ssContextInit}>
             <SSPlayground/>
             {/* {<RealApp></RealApp>} */}
-            <EmployeeInfo employee={initUser}></EmployeeInfo>
         </ssContext.Provider>
     )
 }

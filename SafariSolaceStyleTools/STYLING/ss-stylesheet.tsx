@@ -19,17 +19,17 @@ export const defaultThemeStyle = StyleSheet.create({
 
 /** Get a style by its key.
  * @param keys The UI type that you want to change
- * @param developerMode Setting this to true will use the slyderStyler context instead of the stylesheet
+ * @param developerMode Setting this to true will use the slyderStyler context instead of the regular stylesheet
  */
-export function defaultTheme(keys: key, developerMode?: boolean){
+export function ssStyleSheet(keys: key, developerMode?: boolean){
 
     if (developerMode){
 
         //use context
         const context = useContext(ssContext) ?? null
 
-        console.log("🚀 ~ file: styles.tsx ~ line 31 ~ defaultTheme ~ context", context)
-
+        //console.log("🚀 ~ file: styles.tsx ~ line 31 ~ defaultTheme ~ context", context)
+   
         switch(keys){
             case key.MainView : {var chosenComponent = context.mainView } break
             default : {chosenComponent = context.mainView }

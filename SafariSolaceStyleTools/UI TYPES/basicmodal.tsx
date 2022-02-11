@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, View,StyleSheet, Button, StyleProp, ViewStyle } from "react-native";
-import GetStyle, { key } from "../DEVELOPER STYLING TOOLS/get-styles-by-theme-context";
+import GetStyle from "../DEVELOPER STYLING TOOLS/get-style";
+import { key } from "../STYLING/style-keys";
 import BasicButton from "./basicbutton";
 import BasicText from "./basictext";
 
@@ -21,7 +22,7 @@ export default function BasicModal(props){
           visible={show}
           onRequestClose={() => {setShow(!show)}}>
           <View style={ GetStyle(key.MainView) as StyleProp<ViewStyle>}>
-            <View style={GetStyle(key.ModalView) as StyleProp<ViewStyle>}>
+            <View style={GetStyle(key.MainView) as StyleProp<ViewStyle>}>
 
               <View>
                 {child}
