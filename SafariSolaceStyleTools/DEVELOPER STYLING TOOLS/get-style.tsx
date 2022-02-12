@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { key } from "../STYLING/style-keys";
+import { key } from "../STYLING/ss-style-keys";
 import { ssStyleSheet } from "../STYLING/ss-stylesheet";
 import { themeContext } from "../STYLING/themecontext";
 
@@ -12,19 +12,27 @@ export enum Theme{
  * @param keys The enumeration key representing the type of style desired
  */
 export default function GetStyle(keys: key){
-    console.log("GET STYLES CALLED")
+    //console.log("GET STYLES CALLED")
 
     const context = useContext(themeContext);
     const developermode: boolean = true
     switch(context.theme){
         default:{
-            switch(keys){
-                case key.MainView: {return ssStyleSheet(keys, developermode)} 
-                case key.NavView: { return ssStyleSheet(keys, developermode)} 
-                case key.MenuButton: { return ssStyleSheet(keys, developermode)}
-                case key.Modal: { return ssStyleSheet(keys, developermode)}
-                default: { return ssStyleSheet(key.MainView)}
-            }
+            // switch(keys){
+
+            //     case key.MainView : {return ssStyleSheet(keys, developermode) } 
+            //     case key.NavView : { return ssStyleSheet(keys, developermode) } 
+            //     case key.Text : { return ssStyleSheet(keys, developermode)} 
+            //     case key.Modal : { return ssStyleSheet(keys, developermode)} 
+            //     case key.SyncButton : { return ssStyleSheet(keys, developermode) } 
+            //     case key.titleText: { return ssStyleSheet(keys, developermode) } 
+            //     case key.MenuButton : { return ssStyleSheet(keys, developermode) } 
+            //     case key.MainView : { return ssStyleSheet(keys, developermode) } 
+            //     case key.MainView : { return ssStyleSheet(keys, developermode) } 
+            //     default : {return ssStyleSheet(keys, developermode) }
+                 
+            // }
+            return ssStyleSheet(keys,developermode)
         }
     }
 }

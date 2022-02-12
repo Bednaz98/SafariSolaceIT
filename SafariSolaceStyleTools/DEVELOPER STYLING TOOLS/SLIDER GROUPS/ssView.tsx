@@ -1,7 +1,8 @@
 
 import React, {useContext, useEffect, useState } from "react";
 import { View, Text, Button } from "react-native";
-import { key } from "../../STYLING/style-keys";
+import { key } from "../../STYLING/ss-style-keys";
+import { defaultThemeStyle } from "../../STYLING/stylesheet";
 import CreateSlider from "../create-slider";
 import { ssContext, ssContextInterface } from "../ss-context";
 
@@ -40,7 +41,7 @@ export default class ssViewConstruction implements ssGroupInterface{
     private alignItems: string
     private alignSelf: string  
     
-    private componentID: string
+    private componentID: key
 
     private styleContext: ssContextInterface
    
@@ -50,8 +51,8 @@ export default class ssViewConstruction implements ssGroupInterface{
     constructor(componentID: key){
         
         //naming and context
-        this.componentID = componentID[componentID]
-        const sscontext = useContext(ssContext)
+        this.componentID = componentID
+        const sscontext: ssContextInterface = useContext(ssContext)
         this.styleContext = sscontext
 
         //STATES
@@ -172,7 +173,7 @@ export default class ssViewConstruction implements ssGroupInterface{
     }
 
     getSliders(): JSX.Element{
-        console.log("SLIDERS (RE)RENDERED")
+        //console.log("SLIDERS (RE)RENDERED")
         return(             
             <View style={{flexDirection:"row"}}>
                 <View style={{ justifyContent:'flex-start', alignItems: 'center', alignContent: 'flex-start'}}>
@@ -188,13 +189,12 @@ export default class ssViewConstruction implements ssGroupInterface{
                     <Text style={{textAlign: 'center'}}>{this.componentID}</Text>
                     <CreateSlider title={"border radius"} minVal={0} maxVal={300} callBack={(val) => this.updateState(val, this.setBorderRadius)} />
                     <CreateSlider title={"border width"} minVal={0} maxVal={50} callBack={(val) => this.updateState(val, this.setBorderWidth)} />
-                    <CreateSlider title={"height"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setHeight)}} stepSize={100} />                
+                    <CreateSlider title={"height"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setHeight)}}/>                
                     <CreateSlider title={"width"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setWidth)}} />
                     <CreateSlider title={"paddingVertical"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setPaddingVertical)}}/>  
                     <CreateSlider title={"paddingHorizontal"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setPaddingHorizontal)}} />                  
                 </View>
             </View>
-
         )
     }
 

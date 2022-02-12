@@ -1,21 +1,9 @@
 import { useContext } from "react"
 import { StyleSheet } from "react-native"
-import { ssContext} from "../DEVELOPER STYLING TOOLS/ss-context"
-import { key } from "./style-keys"
+import { ssContext, ssContextInterface} from "../DEVELOPER STYLING TOOLS/ss-context"
+import { key } from "./ss-style-keys"
+import { defaultThemeStyle } from "./stylesheet"
 
-
-export const defaultThemeStyle = StyleSheet.create({
-    MenuButton:{
-        color: 'blue'
-    },
-    SyncButton:{},
-    MainView:  {backgroundColor: 'purple'},
-    NavView:{},
-    UserlistName:{},
-    TitleView:{},
-    ListView:{},
-    ModalView: {}
-})
 
 /** Get a style by its key.
  * @param keys The UI type that you want to change
@@ -26,15 +14,32 @@ export function ssStyleSheet(keys: key, developerMode?: boolean){
     if (developerMode){
 
         //use context
-        const context = useContext(ssContext) ?? null
-
-        //console.log("🚀 ~ file: styles.tsx ~ line 31 ~ defaultTheme ~ context", context)
-   
+        const context: ssContextInterface = useContext(ssContext)
         switch(keys){
-            case key.MainView : {var chosenComponent = context.mainView } break
-            default : {chosenComponent = context.mainView }
+            case key.MainView : {return context.mainView } 
+            case key.NavView : { return context.navView } 
+            case key.Text : { return context.text } 
+            case key.Modal : { return context.modal } 
+            case key.SyncButton : { return context.syncButton } 
+            case key.titleText: { return context.titleText } 
+            //case key.MenuButton : { return context.M } 
+            //case key.MainView : { return context.mainView } 
+            //case key.MainView : { return context.mainView } 
+            default : {console.log('default style selected'); return context.mainView }
         }       
-        return (chosenComponent)
     }
-    else{ return (defaultThemeStyle.MainView) }
+    else{ var chosenComponent
+        switch(keys){
+            case key.MainView : {return defaultThemeStyle.MainView } 
+            case key.NavView : { return defaultThemeStyle.NavView } 
+            case key.Text : { return defaultThemeStyle.Text } 
+            case key.Modal : { return defaultThemeStyle.Modal } 
+            case key.SyncButton : { return defaultThemeStyle.SyncButton} 
+            case key.titleText: { return defaultThemeStyle.TitleText } 
+            case key.MenuButton : { return defaultThemeStyle.MenuButton } 
+            //case key.MainView : { return defaultThemeStyle.NavView } 
+            //case key.MainView : { return defaultThemeStyle.NavView } 
+            default : {return defaultThemeStyle.NavView }
+        }       
+        return (chosenComponent)}
 }

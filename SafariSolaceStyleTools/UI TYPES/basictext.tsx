@@ -1,5 +1,7 @@
 import React from 'react'
 import { View,Text } from 'react-native'
+import GetStyle from '../DEVELOPER STYLING TOOLS/get-style'
+import { key } from '../STYLING/ss-style-keys'
 
 
 
@@ -10,10 +12,10 @@ export default function BasicText(props:{text: string, style?: Object, type?: Te
     if(!text){throw new Error('You did not pass a text value into one of your text')}
     //This will grab from the props the type of text for styling
     // is not found, it will default to general text
-    const textType:TextType = props?.type ?? TextType.General
+    //const textType:TextType = props?.type ?? TextType.General
     return (
-    <View style={{padding:3}}>
-        <Text style={style ?? {}}>{text}</Text> 
+    <View >
+        <Text style={GetStyle(key.NavView)}>{text}</Text> 
     </View>)
 
     // getTextStyle(textType)

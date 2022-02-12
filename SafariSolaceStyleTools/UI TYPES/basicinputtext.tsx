@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleProp, TextInput, View, ViewStyle } from "react-native";
 import GetStyle from "../DEVELOPER STYLING TOOLS/get-style";
-import { key } from "../STYLING/style-keys";
+import { key } from "../STYLING/ss-style-keys";
 
 
 export default function BasicInputText(props){
@@ -15,7 +15,7 @@ export default function BasicInputText(props){
     const onContentSizeChange = props?.onContentSizeChange ?? ( ({ nativeEvent: { contentSize: { width, height } } }) => {} );
 
     return(
-    <View style={GetStyle(key.MainView) as StyleProp<ViewStyle>}> 
+    <View> 
         <TextInput value={value} onChangeText={onChangeText} placeholder={placeholder} 
         keyboardType='default' editable={editable} onChange={onChange} onContentSizeChange={onContentSizeChange}/>
     </View>)

@@ -6,7 +6,7 @@ import { Employee } from "../ENTITIES/user";
 import { localInterface } from "../INTERFACES/employee-api-interface";
 import GetStyle from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-style";
 import { ssContext, ssContextInterface } from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/ss-context";
-import { key } from "../SafariSolaceStyleTools/STYLING/style-keys";
+import { key } from "../SafariSolaceStyleTools/STYLING/ss-style-keys";
 import BasicButton from "../SafariSolaceStyleTools/UI TYPES/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/UI TYPES/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/UI TYPES/basictext";
@@ -21,10 +21,10 @@ export default function EmployeeInfo(props: { employee: Employee }) {
 
     //global states
     const contextStates = useContext(appContext);
-    const sscontext: ssContextInterface = useContext(ssContext);
+    //const sscontext: ssContextInterface = useContext(ssContext);
     //const [rerender, setrerender] = useState(0)
     //useEffect(()=>{setrerender(rerender + 1)},[sscontext])
-    useEffect(()=> {console.log('the child context changed and is:', sscontext.mainView)}, [sscontext.mainView])
+    //useEffect(()=> {console.log('the child context changed and is:', sscontext.mainView)}, [sscontext.mainView])
     
     //local states
     const [pwUpdateState, setpwUpdate] = useState<boolean>(false); //display new password creation
@@ -59,13 +59,13 @@ export default function EmployeeInfo(props: { employee: Employee }) {
 
     //render page
     function renderPage(){
-        console.log("CHILD (RE)RENDERED")
+        //console.log("CHILD (RE)RENDERED")
         return (<View style={GetStyle(key.MainView)}>
             <BasicText text={`Name: ${employee.fname} ${employee.lname}`}/>
             <BasicText text={ `Username: ${ employee.username }` }/>
             <BasicText text={ `ID: ${ employee.id }`}/>
             <BasicText text={ `Manager: ${ employee.isManager ? 'Yes':'No' }`}/>
-            <Text>***************************TESTING****************************</Text>
+            <Text style={GetStyle(key.NavView)}>***************************TESTING****************************</Text>
 
             {pwUpdateState ? (
                 <View>

@@ -3,14 +3,15 @@ import { Button, View } from "react-native"
 import EmployeeInfo from "./COMPONENTS/employee-info-and-pw-change"
 import { Employee } from "./ENTITIES/user"
 import ssViewConstruction, { ssGroupInterface } from "./SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/SLIDER GROUPS/ssView"
-import { key } from "./SafariSolaceStyleTools/STYLING/style-keys"
+import { key } from "./SafariSolaceStyleTools/STYLING/ss-style-keys"
 
 export default function SSPlayground() {
     console.log("SSPLAYGROUND CALLED")
     //slider groups
     const mainView: ssGroupInterface = new ssViewConstruction(key.MainView)
+    const navView: ssGroupInterface = new ssViewConstruction(key.NavView)
     //const navView: ssGroupInterface = new ssViewConstruction(key.NavView)
-    const sliderGroups = [mainView.getSliders()]
+    const sliderGroups = [mainView.getSliders(), navView.getSliders()]
     //console.log("🚀 ~ file: ss-playground.tsx ~ line 13 ~ SSPlayground ~ sliderGroups", mainView.getStyle())
 
     const [toggleSliders, setToggleSliders] = useState<boolean>()
@@ -30,7 +31,6 @@ export default function SSPlayground() {
     return (
         <>
             <>{RenderSliders(sliderGroups)}</>
-            <EmployeeInfo employee={initUser}></EmployeeInfo>
         </>
     )
 
