@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import LocalEmployee, { Employee } from "../ENTITIES/user";
+import LocalEmployee, { Employee } from "../entities/user";
 import { Theme } from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-style";
 
 

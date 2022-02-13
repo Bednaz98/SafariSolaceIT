@@ -1,4 +1,4 @@
-import { Employee } from "../ENTITIES/user";
+import { Employee } from "../entities/user";
 
 
 

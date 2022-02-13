@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useContext } from "react";
-import Employee from "../ENTITIES/user";
-import EmployeeInterface from "../INTERFACES/employee-api-interface";
+import Employee from "../entities/user";
+import EmployeeInterface from "../interfaces/employee-api-interface";
 import { appContext } from "./app-context";
 
 

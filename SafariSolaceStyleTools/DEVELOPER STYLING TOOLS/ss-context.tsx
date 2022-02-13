@@ -30,9 +30,6 @@ interface stylePropsText{
     textShadowRadius: number
 }
 
-interface styleTextInput extends stylePropsText{
-    poop: string
-}
 
 
 //list and scrollview interface?
@@ -47,6 +44,7 @@ export interface ssContextInterface{
     modal: Object
    
     setByKey: Function
+    getByKey: Function
     setMainView: Function
     setNavView: Function
     setTextView: Function

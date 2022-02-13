@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text} from "react-native";
-import { appContext } from "../CLASSES/app-context";
-import LocalHandler from "../CLASSES/local-handler";
-import { Employee } from "../ENTITIES/user";
-import { localInterface } from "../INTERFACES/employee-api-interface";
+import { appContext } from "../classes/app-context";
+import LocalHandler from "../classes/local-handler";
+import { Employee } from "../entities/user";
+import { localInterface } from "../interfaces/employee-api-interface";
 import GetStyle from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-style";
 import { ssContext, ssContextInterface } from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/ss-context";
 import { key } from "../SafariSolaceStyleTools/STYLING/ss-style-keys";

@@ -1,6 +1,6 @@
 
-import { Employee } from "../ENTITIES/user";
-import { localInterface } from "../INTERFACES/employee-api-interface";
+import { Employee } from "../entities/user";
+import { localInterface } from "../interfaces/employee-api-interface";
 
 
 export default class LocalHandler implements localInterface {
