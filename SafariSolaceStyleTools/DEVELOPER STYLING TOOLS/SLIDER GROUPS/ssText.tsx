@@ -2,7 +2,7 @@
 import React, {useContext, useEffect, useState } from "react";
 import { View, Text} from "react-native";
 import CreateSlider from "../create-slider";
-import { ssContext, ssContextInterface, stylePropsText } from "../ss-context";
+import { ssContext, ssContextInterface } from "../ss-context";
 
 export interface ssGroupInterfaceText{
     getSliders(): JSX.Element
@@ -258,7 +258,8 @@ export default class ssTextConstruction implements ssGroupInterfaceText{
                     <CreateSlider title={"letter spacing"} minVal={0} maxVal={50} initState={this.letterSpacing} callBack={(val) => {this.updateState(val, this.setLetterSpacing)}}/>                
                     <CreateSlider title={"line height"} minVal={0} maxVal={50} initState={this.lineHeight} callBack={(val) => {this.updateState(val, this.setLineHeight)}} />
                     <CreateSlider title={"text align"} minVal={0} maxVal={2} callBack={this.getTextAlign}/>  
-                    <CreateSlider title={"text shadow color"} minVal={0} maxVal={6} callBack={(val) => this.getColors(val, this.setTextShadowColor)} />                  
+                    <CreateSlider title={"text shadow color"} minVal={0} maxVal={6} callBack={(val) => this.getColors(val, this.setTextShadowColor)} /> 
+                    <CreateSlider title={"text shadow radius"} minVal={0} maxVal={100} initState={this.textShadowRadius} callBack={(val) => this.updateState(val, this.setTextShadowRadius)} />                                   
                 </View>
             </View>
         )
@@ -274,8 +275,8 @@ export default class ssTextConstruction implements ssGroupInterfaceText{
             textAlign: this.textAlign,
             letterSpacing: this.letterSpacing,
             lineHeight: this.lineHeight,
-            //textShadowColor: this.textShadowColor,
-            //textShadowRadius: this.textShadowRadius,
+            textShadowColor: this.textShadowColor,
+            textShadowRadius: this.textShadowRadius,
             borderColor: this.borderColor,
             opacity: this.opacity,
             width: this.width, 

@@ -8,19 +8,9 @@ import { themeContext } from "./themecontext"
  * @param keys The UI type that you want to change
  * @param developerMode Setting this to true will use the slyderStyler context instead of the regular stylesheet
  */
-export function ssStyleSheet(keys: string, developerMode?: boolean){  
-    if (developerMode){
-        //use context
-        const context: ssContextInterface = useContext(ssContext)
-        const retrievedContext = context.getByKey(keys)
-        return retrievedContext     
-    }
-    else{
-        const themes = useContext(themeContext)
-        switch (themes.theme){
-            case (Theme.theme2) : return coolTheme[keys]
-            default: return defaultThemeStyle[keys]
-        }
-    }
+export function ssStyleSheet(keys: string){  
+    const context: ssContextInterface = useContext(ssContext)
+    const retrievedContext = context.getByKey(keys)
+    return retrievedContext 
       
 }

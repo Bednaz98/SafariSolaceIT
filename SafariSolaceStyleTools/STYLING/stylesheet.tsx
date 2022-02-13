@@ -64,11 +64,11 @@ export const defaultThemeStyle = StyleSheet.create({
 
 export const coolTheme = StyleSheet.create({
     "MainView": {
-        "backgroundColor": "#663300",
+        "backgroundColor": "grey",
         "borderColor": "black",
         "opacity": 1,
         "width": 647,
-        "height": 500,
+        "height": 460,
         "paddingVertical": 0,
         "paddingHorizontal": 0,
         "justifyContent": "center",
@@ -76,7 +76,7 @@ export const coolTheme = StyleSheet.create({
         "alignItems": "center",
         "alignSelf": "center",
         "borderWidth": 0,
-        "borderRadius": 66
+        "borderRadius": 112
       },
       "NavView": {
         "backgroundColor": "grey",
@@ -95,25 +95,25 @@ export const coolTheme = StyleSheet.create({
       },
       "InfoView": {},
       "Text": {
-        "color": "#2D63C8",
+        "color": "#66B032",
         "backgroundColor": "grey",
-        "fontSize": 18,
+        "fontSize": 30,
         "fontFamily": "serif",
         "textAlign": "center",
-        "letterSpacing": 0,
+        "letterSpacing": 10,
         "lineHeight": 50,
+        "textShadowColor": "#663300",
+        "textShadowRadius": 6,
         "borderColor": "black",
         "opacity": 1,
-        "width": 547,
-        "height": 100,
-        "paddingVertical": 13,
+        "width": 527,
+        "height": 80,
+        "paddingVertical": 0,
         "paddingHorizontal": 0,
         "justifyContent": "center",
         "alignContent": "center",
         "alignItems": "center",
-        "alignSelf": "center",
-        "borderWidth": 14,
-        "borderRadius": 42
+        "alignSelf": "center"
       },
       "TitleText": {},
       "Modal": {},

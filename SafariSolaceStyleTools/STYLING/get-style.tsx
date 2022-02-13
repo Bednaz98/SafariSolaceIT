@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ssStyleSheet } from "./ss-stylesheet";
+import { coolTheme, defaultThemeStyle } from "./stylesheet";
 import { themeContext } from "./themecontext";
 
 export enum Theme{
@@ -14,6 +15,16 @@ export enum Theme{
 export default function GetStyle(keys: string){
     //console.log("GET STYLES CALLED")
 
-    const developermode: boolean = false 
-    return ssStyleSheet(keys,developermode)
+    const developermode: boolean = false
+
+    if (developermode){
+        return ssStyleSheet(keys)
+    }
+    else{
+        const themes = useContext(themeContext)
+        switch (themes.theme){
+            case (Theme.theme2) : return coolTheme[keys]
+            default: return defaultThemeStyle[keys]
+        }
+    }
 }
