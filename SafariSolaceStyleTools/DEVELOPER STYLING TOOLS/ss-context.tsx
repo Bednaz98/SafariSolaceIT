@@ -1,4 +1,5 @@
 import { createContext} from "react";
+import { ssKeysInterface } from "../STYLING/ss-style-keys";
 
 
 interface stylePropsView{
@@ -34,24 +35,11 @@ interface stylePropsText{
 
 //list and scrollview interface?
 
-export interface ssContextInterface{
-    mainView: Object
-    navView: Object
-    textView: Object
-    text: Object
-    titleText: Object
-    syncButton: Object
-    modal: Object
-   
+export interface ssContextInterface{  
+    styleContextObject: ssKeysInterface
+    setStyleContextObject: Function
     setByKey: Function
     getByKey: Function
-    setMainView: Function
-    setNavView: Function
-    setTextView: Function
-    setText: Function
-    setModal: Function
-    setTitleText: Function
-    setSyncButton: Function
 }
 
 // ssContextInit

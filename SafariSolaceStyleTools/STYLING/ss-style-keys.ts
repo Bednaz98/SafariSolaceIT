@@ -1,17 +1,5 @@
 /** Keys dude */
 
-export enum key{
-    MainView,
-    NavView,
-    InfoView,
-    Text,
-    Modal,
-    MenuButton,
-    SyncButton,
-    infoText,
-    titleText
-}
-
 export interface ssKeysInterface{
     MainView: Object
     NavView: Object

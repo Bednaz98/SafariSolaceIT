@@ -1,8 +1,6 @@
 
 import React, {useContext, useEffect, useState } from "react";
-import { View, Text, Button } from "react-native";
-import { key } from "../../STYLING/ss-style-keys";
-import { defaultThemeStyle } from "../../STYLING/stylesheet";
+import { View, Text} from "react-native";
 import CreateSlider from "../create-slider";
 import { ssContext, ssContextInterface } from "../ss-context";
 
@@ -41,14 +39,14 @@ export default class ssViewConstruction implements ssGroupInterface{
     private alignItems: string
     private alignSelf: string  
     
-    private componentID: key
+    private componentID: string
 
     private styleContext: ssContextInterface
    
     /** Create a slidergroup for a view
      *@param componentID: The unique name for the component you want to alter
     */
-    constructor(componentID: key){
+    constructor(componentID: string){
         
         //naming and context
         this.componentID = componentID
@@ -56,12 +54,12 @@ export default class ssViewConstruction implements ssGroupInterface{
         this.styleContext = sscontext
 
         //STATES
-        const [color, setColor] = useState<string>('not set')
-        const [justifyContentState, setJustifyContent] = useState<string>('derpa')
-        const [alignContentState, setAlignContent] = useState<string>('derpa')
-        const [alignItemsState, setAlignItems] = useState<string>('derpa')
-        const [alignSelfState, setAlignSelf] = useState<string>('derpa')
-        const [borderColorState, setBorderColor] = useState<string>()
+        const [color, setColor] = useState<string>('init')
+        const [justifyContentState, setJustifyContent] = useState<string>('init')
+        const [alignContentState, setAlignContent] = useState<string>('init')
+        const [alignItemsState, setAlignItems] = useState<string>('init')
+        const [alignSelfState, setAlignSelf] = useState<string>('init')
+        const [borderColorState, setBorderColor] = useState<string>('init')
         const [borderWidthState, setBorderWidth] = useState<number>()
         const [borderRadiusState, setBorderRadius] = useState<number>()
         const [widthState, setWidth] = useState<number>(50)
@@ -189,8 +187,8 @@ export default class ssViewConstruction implements ssGroupInterface{
                     <Text style={{textAlign: 'center'}}>{this.componentID}</Text>
                     <CreateSlider title={"border radius"} minVal={0} maxVal={300} callBack={(val) => this.updateState(val, this.setBorderRadius)} />
                     <CreateSlider title={"border width"} minVal={0} maxVal={50} callBack={(val) => this.updateState(val, this.setBorderWidth)} />
-                    <CreateSlider title={"height"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setHeight)}}/>                
-                    <CreateSlider title={"width"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setWidth)}} />
+                    <CreateSlider title={"height"} minVal={0} maxVal={1000} state={this.height} callBack={(val) => {this.updateState(val, this.setHeight)}}/>                
+                    <CreateSlider title={"width"} minVal={0} maxVal={1000} state={this.width} callBack={(val) => {this.updateState(val, this.setWidth)}} />
                     <CreateSlider title={"paddingVertical"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setPaddingVertical)}}/>  
                     <CreateSlider title={"paddingHorizontal"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setPaddingHorizontal)}} />                  
                 </View>
