@@ -25,7 +25,7 @@ export default function RealApp() {
   const initEmployeeList:LocalEmployee[]= [initEmployee]
   const [employeeList, setEmployeeList] = useState(initEmployeeList);
   const [employeeIndex, setEmployeeIndex] = useState(-1);
-  const [theme, setTheme] = useState(Theme.default);
+  const [theme, setTheme] = useState(Theme.theme2);
   const [sync, setSync] = useState(true);
 
   //########################################################################## 

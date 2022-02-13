@@ -4,14 +4,14 @@ import { View, Text} from "react-native";
 import CreateSlider from "../create-slider";
 import { ssContext, ssContextInterface, stylePropsText } from "../ss-context";
 
-export interface ssGroupInterface{
+export interface ssGroupInterfaceText{
     getSliders(): JSX.Element
     getColors(value: number, setter: Function)
     updateContext(value: number, setter: Function): void
     getStyle(): Object
 }
 
-export default class ssTextConstruction implements ssGroupInterface{
+export default class ssTextConstruction implements ssGroupInterfaceText{
     private fontSize: number
     private letterSpacing: number
     private lineHeight: number
@@ -88,7 +88,7 @@ export default class ssTextConstruction implements ssGroupInterface{
         const [alignContentState, setAlignContent] = useState<string>('center')
         const [alignItemsState, setAlignItems] = useState<string>('center')
         const [alignSelfState, setAlignSelf] = useState<string>('center')
-        const [borderColorState, setBorderColor] = useState<string>('center')
+        const [borderColorState, setBorderColor] = useState<string>('black')
         const [borderWidthState, setBorderWidth] = useState<number>()
         const [borderRadiusState, setBorderRadius] = useState<number>()
         const [widthState, setWidth] = useState<number>(100)
@@ -106,7 +106,8 @@ export default class ssTextConstruction implements ssGroupInterface{
             color, justifyContentState, widthState, heightState, paddingVerticalState, 
             paddingHorizontalState, borderColorState, borderRadiusState, borderWidthState, 
             alignContentState, alignItemsState, alignSelfState, opacity, fontSize,
-            letterSpacing, lineHeight, textAlign, textShadowColor, textShadowRadius, fontFamily
+            letterSpacing, lineHeight, textAlign, textShadowColor, textShadowRadius, fontFamily,
+            backgroundColor
         ])
 
         //class attribute state assigment
@@ -154,8 +155,7 @@ export default class ssTextConstruction implements ssGroupInterface{
         this.setAlignSelf = setAlignSelf
         this.setOpacity = setOpacity
     }
-
-    
+  
     getColors = (value: number, setter: Function) => {
         switch(Math.round(value)){
             case 0: {setter('black')} break
@@ -166,35 +166,7 @@ export default class ssTextConstruction implements ssGroupInterface{
             case 5: {setter('#F5D000')} break //yellow
             case 6: {setter('white')} break
         }
-        //this.updateContext()
     }
-
-
-    // getColors = (value: number) => {
-    //     switch(Math.round(value)){
-    //         case 0: {this.setColor('black')} break
-    //         case 1: {this.setColor('grey')} break
-    //         case 2: {this.setColor('#663300')} break //brown
-    //         case 3: {this.setColor('#2D63C8')} break //blue
-    //         case 4: {this.setColor('#66B032')} break //green
-    //         case 5: {this.setColor('#F5D000')} break //yellow
-    //         case 6: {this.setColor('white')} break
-    //     }
-    //     //this.updateContext()
-    // }
-
-    // getBorderColor = (value: number) => {
-    //     switch(Math.round(value)){
-    //         case 0: {this.setBorderColor('black')} break
-    //         case 1: {this.setBorderColor('grey')} break
-    //         case 2: {this.setBorderColor('#663300')} break //brown
-    //         case 3: {this.setBorderColor('#2D63C8')} break //blue
-    //         case 4: {this.setBorderColor('#66B032')} break //green
-    //         case 5: {this.setBorderColor('#F5D000')} break //yellow
-    //         case 6: {this.setBorderColor('white')} break
-    //     }
-    //     //this.updateContext()
-    // }
 
     getJustifyContent= (value: number) => {
         switch(Math.round(value)){
@@ -202,7 +174,6 @@ export default class ssTextConstruction implements ssGroupInterface{
             case 1: {this.setJustifyContent('center')} break
             case 2: {this.setJustifyContent('flex-end')} break
         }
-        //this.updateContext()
     }
 
     getAlignContent= (value: number) => {
@@ -211,7 +182,6 @@ export default class ssTextConstruction implements ssGroupInterface{
             case 1: {this.setAlignContent('center')} break
             case 2: {this.setAlignContent('flex-end')} break
         }
-        //this.updateContext()
     }
 
     getAlignItems= (value: number) => {
@@ -220,7 +190,6 @@ export default class ssTextConstruction implements ssGroupInterface{
             case 1: {this.setAlignItems('center')} break
             case 2: {this.setAlignItems('flex-end')} break
         }
-        //this.updateContext()
     }
 
     getAlignSelf= (value: number) => {
@@ -229,7 +198,6 @@ export default class ssTextConstruction implements ssGroupInterface{
             case 1: {this.setAlignSelf('center')} break
             case 2: {this.setAlignSelf('flex-end')} break
         }
-        //this.updateContext()
     }
 
     getTextAlign = (value: number) => {

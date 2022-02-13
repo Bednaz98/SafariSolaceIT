@@ -58,14 +58,14 @@ export default class ssViewConstruction implements ssGroupInterface{
 
         //STATES
         const [color, setColor] = useState<string>('grey')
+        const [borderColorState, setBorderColor] = useState<string>('black')
         const [opacity, setOpacity] = useState<number>(1)
         const [justifyContentState, setJustifyContent] = useState<string>('center')
         const [alignContentState, setAlignContent] = useState<string>('center')
         const [alignItemsState, setAlignItems] = useState<string>('center')
         const [alignSelfState, setAlignSelf] = useState<string>('center')
-        const [borderColorState, setBorderColor] = useState<string>('center')
-        const [borderWidthState, setBorderWidth] = useState<number>()
-        const [borderRadiusState, setBorderRadius] = useState<number>()
+        const [borderWidthState, setBorderWidth] = useState<number>(0)
+        const [borderRadiusState, setBorderRadius] = useState<number>(0)
         const [widthState, setWidth] = useState<number>(100)
         const [heightState, setHeight] = useState<number>(100)
         const [paddingVerticalState, setPaddingVertical] = useState<number>(0)
@@ -135,6 +135,7 @@ export default class ssViewConstruction implements ssGroupInterface{
             case 4: {this.setBorderColor('#66B032')} break //green
             case 5: {this.setBorderColor('#F5D000')} break //yellow
             case 6: {this.setBorderColor('white')} break
+            default: {this.setBorderColor('black')}
         }
         //this.updateContext()
     }

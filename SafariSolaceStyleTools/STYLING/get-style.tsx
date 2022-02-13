@@ -4,7 +4,8 @@ import { themeContext } from "./themecontext";
 
 export enum Theme{
     default,
-    other
+    other,
+    theme2
 }
 
 /** Get the style based off of a ID key. The styles can represent an ID (like a 'syncButton' style), or a UI type (like a 'Text' style)
@@ -13,11 +14,6 @@ export enum Theme{
 export default function GetStyle(keys: string){
     //console.log("GET STYLES CALLED")
 
-    const context = useContext(themeContext);
-    const developermode: boolean = true
-    switch(context.theme){
-        default:{   
-            return ssStyleSheet(keys,developermode)
-        }
-    }
+    const developermode: boolean = false 
+    return ssStyleSheet(keys,developermode)
 }
