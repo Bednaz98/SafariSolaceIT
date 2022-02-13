@@ -1,10 +1,9 @@
 
 import React, { useContext } from 'react';
 import { useState } from 'react';
-import { appContext, AppContextInterface } from './CLASSES/app-context';
-import EmployeeInfo from './COMPONENTS/employee-info-and-pw-change';
-import LocalEmployee, { Employee, Status } from './ENTITIES/user';
-import { ssContextInterface } from './SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/ss-context';
+import { appContext, AppContextInterface } from './classes/app-context';
+import EmployeeInfo from './components/employee-info-and-pw-change';
+import LocalEmployee, { Employee, Status } from './entities/user';
 import { Theme } from './SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-style';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/STYLING/themecontext';
 

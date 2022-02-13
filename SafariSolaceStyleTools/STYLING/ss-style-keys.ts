@@ -5,6 +5,7 @@ export interface ssKeysInterface{
     NavView: Object
     InfoView: Object
     Text: Object
+    TitleText: Object
     Modal: Object
     MenuButton: Object
     SyncButton: Object
@@ -18,6 +19,7 @@ export const ssKeys: ssKeysInterface = {
     NavView: {},
     InfoView: {},
     Text: {},
+    TitleText: {},
     Modal: {},
     MenuButton: {},
     SyncButton: {},

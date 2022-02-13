@@ -18,7 +18,7 @@ interface stylePropsView{
     alignSelf: string
 }
 
-interface stylePropsText{
+export interface stylePropsText{
     color: string //could use background color?
     fontFamily: string
     fontSize: number

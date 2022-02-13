@@ -59,7 +59,7 @@ export default function EmployeeInfo(props: { employee: Employee }) {
             <BasicText text={ `Username: ${ employee.username }` }/>
             <BasicText text={ `ID: ${ employee.id }`}/>
             <BasicText text={ `Manager: ${ employee.isManager ? 'Yes':'No' }`}/>
-            <Text style={GetStyle("NavView")}>***************************TESTING****************************</Text>
+            <Text>***************************TESTING****************************</Text>
 
             {pwUpdateState ? (
                 <View>

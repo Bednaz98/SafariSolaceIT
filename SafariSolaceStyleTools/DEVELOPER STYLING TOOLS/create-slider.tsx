@@ -3,14 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import { ssContext } from "./ss-context";
 
-export default function CreateSlider(props:{title: string, minVal: number, maxVal: number, callBack: Function, stepSize?: number, state?: number}){
+export default function CreateSlider(props:{title: string, minVal: number, maxVal: number, callBack: Function, stepSize?: number, initState?: number}){
 
-    const [sliderVal, setSliderVal] = useState<number>(props.state ?? 0)
+    const [sliderVal, setSliderVal] = useState<number>(props.initState ?? 0)
 
     return(
         <View><Text>{props.title} {sliderVal}</Text>
         <Slider
-            value={props.state ?? 0}
+            value={props.initState ?? 0}
             step={props?.stepSize ?? 1}
             style={{width: 150, height: 20}}
             minimumValue={props.minVal}

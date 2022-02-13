@@ -13,6 +13,7 @@ export interface ssGroupInterface{
 export default class ssViewConstruction implements ssGroupInterface{
     private width: number
     private height: number
+    private opacity: number
     private paddingVertical: number
     private paddingHorizontal: number
     private borderWidth: number
@@ -25,12 +26,14 @@ export default class ssViewConstruction implements ssGroupInterface{
     private setPaddingVertical: Function
     private setPaddingHorizontal: Function
     private setColor: Function
+    private setOpacity: Function
     private setBorderColor: Function
     private setJustifyContent: Function
     private setAlignContent: Function
     private setAlignItems: Function
     private setAlignSelf: Function
 
+    //private color: string
     private color: string
     private borderColor: string
     private flexDirection: string
@@ -54,26 +57,35 @@ export default class ssViewConstruction implements ssGroupInterface{
         this.styleContext = sscontext
 
         //STATES
-        const [color, setColor] = useState<string>('init')
-        const [justifyContentState, setJustifyContent] = useState<string>('init')
-        const [alignContentState, setAlignContent] = useState<string>('init')
-        const [alignItemsState, setAlignItems] = useState<string>('init')
-        const [alignSelfState, setAlignSelf] = useState<string>('init')
-        const [borderColorState, setBorderColor] = useState<string>('init')
+        const [color, setColor] = useState<string>('grey')
+        const [opacity, setOpacity] = useState<number>(1)
+        const [justifyContentState, setJustifyContent] = useState<string>('center')
+        const [alignContentState, setAlignContent] = useState<string>('center')
+        const [alignItemsState, setAlignItems] = useState<string>('center')
+        const [alignSelfState, setAlignSelf] = useState<string>('center')
+        const [borderColorState, setBorderColor] = useState<string>('center')
         const [borderWidthState, setBorderWidth] = useState<number>()
         const [borderRadiusState, setBorderRadius] = useState<number>()
-        const [widthState, setWidth] = useState<number>(50)
-        const [heightState, setHeight] = useState<number>(50)
+        const [widthState, setWidth] = useState<number>(100)
+        const [heightState, setHeight] = useState<number>(100)
         const [paddingVerticalState, setPaddingVertical] = useState<number>(0)
         const [paddingHorizontalState, setPaddingHorizontal] = useState<number>(0)
+
+        //useEffect(()=>{setColorState(`rgb(${red}, ${green}, ${blue})`)}), [this.red, this.green, this.blue]
 
         //!!trying to update context using the slider callbacks was not working because the states located here had not
         //been updated yet (even though the this.states were!!) The useEffect is required so that the context update
         // takes place after the ACTUAL states above have been updated
-        useEffect(()=> {this.updateContext()}, [color, justifyContentState, widthState, heightState, paddingVerticalState, paddingHorizontalState, borderColorState, borderRadiusState, borderWidthState, alignContentState, alignItemsState, alignSelfState])
+        useEffect(()=> {this.updateContext()}, 
+        [
+            color, justifyContentState, widthState, heightState, paddingVerticalState, 
+            paddingHorizontalState, borderColorState, borderRadiusState, borderWidthState, 
+            alignContentState, alignItemsState, alignSelfState, opacity
+        ])
 
         //class attribute state assigment
         this.color = color
+        this.opacity = opacity
         this.borderColor = borderColorState
         this.borderRadius = borderRadiusState
         this.borderWidth = borderWidthState
@@ -98,29 +110,31 @@ export default class ssViewConstruction implements ssGroupInterface{
         this.setAlignContent = setAlignContent
         this.setAlignItems = setAlignItems
         this.setAlignSelf = setAlignSelf
-        this.setHeight = setHeight
-        this.setPaddingVertical = setPaddingVertical
-        this.setPaddingHorizontal = setPaddingHorizontal
-        this.setColor = setColor
-        this.setJustifyContent = setJustifyContent
+        this.setOpacity = setOpacity
     }
 
     getColors = (value: number) => {
         switch(Math.round(value)){
-            case 0: {this.setColor('brown')} break
-            case 1: {this.setColor('green')} break
-            case 2: {this.setColor('purple')} break
-            case 3: {this.setColor('yellow')} break
+            case 0: {this.setColor('black')} break
+            case 1: {this.setColor('grey')} break
+            case 2: {this.setColor('#663300')} break //brown
+            case 3: {this.setColor('#2D63C8')} break //blue
+            case 4: {this.setColor('#66B032')} break //green
+            case 5: {this.setColor('#F5D000')} break //yellow
+            case 6: {this.setColor('white')} break
         }
         //this.updateContext()
     }
 
     getBorderColor = (value: number) => {
         switch(Math.round(value)){
-            case 0: {this.setBorderColor('brown')} break
-            case 1: {this.setBorderColor('green')} break
-            case 2: {this.setBorderColor('purple')} break
-            case 3: {this.setBorderColor('yellow')} break
+            case 0: {this.setBorderColor('black')} break
+            case 1: {this.setBorderColor('grey')} break
+            case 2: {this.setBorderColor('#663300')} break //brown
+            case 3: {this.setBorderColor('#2D63C8')} break //blue
+            case 4: {this.setBorderColor('#66B032')} break //green
+            case 5: {this.setBorderColor('#F5D000')} break //yellow
+            case 6: {this.setBorderColor('white')} break
         }
         //this.updateContext()
     }
@@ -176,8 +190,9 @@ export default class ssViewConstruction implements ssGroupInterface{
             <View style={{flexDirection:"row"}}>
                 <View style={{ justifyContent:'flex-start', alignItems: 'center', alignContent: 'flex-start'}}>
                     <Text style={{textAlign: 'center'}}>{this.componentID}</Text>
-                    <CreateSlider title={"color"} minVal={0} maxVal={3} callBack={this.getColors} />
-                    <CreateSlider title={"border color"} minVal={0} maxVal={3} callBack={this.getBorderColor} />
+                    <CreateSlider title={"background color"} minVal={0} maxVal={6} callBack={this.getColors} />
+                    <CreateSlider title={"border color"} minVal={0} maxVal={6} callBack={this.getBorderColor} />
+                    <CreateSlider title={"opacity"} minVal={0} maxVal={1} initState={this.opacity} callBack={(val) => this.updateState(val, this.setOpacity)} stepSize={.05} />
                     <CreateSlider title={"justify content"} minVal={0} maxVal={2} callBack={this.getJustifyContent} />
                     <CreateSlider title={"align content"} minVal={0} maxVal={2} callBack={this.getAlignContent} />
                     <CreateSlider title={"align items"} minVal={0} maxVal={2} callBack={this.getAlignItems} />
@@ -185,12 +200,12 @@ export default class ssViewConstruction implements ssGroupInterface{
                 </View>
                 <View style={{ justifyContent:'flex-start', alignItems: 'center', alignContent: 'flex-start'}}>
                     <Text style={{textAlign: 'center'}}>{this.componentID}</Text>
-                    <CreateSlider title={"border radius"} minVal={0} maxVal={300} callBack={(val) => this.updateState(val, this.setBorderRadius)} />
-                    <CreateSlider title={"border width"} minVal={0} maxVal={50} callBack={(val) => this.updateState(val, this.setBorderWidth)} />
-                    <CreateSlider title={"height"} minVal={0} maxVal={1000} state={this.height} callBack={(val) => {this.updateState(val, this.setHeight)}}/>                
-                    <CreateSlider title={"width"} minVal={0} maxVal={1000} state={this.width} callBack={(val) => {this.updateState(val, this.setWidth)}} />
-                    <CreateSlider title={"paddingVertical"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setPaddingVertical)}}/>  
-                    <CreateSlider title={"paddingHorizontal"} minVal={0} maxVal={1000} callBack={(val) => {this.updateState(val, this.setPaddingHorizontal)}} />                  
+                    <CreateSlider title={"border radius"} minVal={0} maxVal={300} initState={this.borderRadius} callBack={(val) => this.updateState(val, this.setBorderRadius)} />
+                    <CreateSlider title={"border width"} minVal={0} maxVal={50} initState={this.borderWidth} callBack={(val) => this.updateState(val, this.setBorderWidth)} />
+                    <CreateSlider title={"height"} minVal={0} maxVal={1000} initState={this.height} callBack={(val) => {this.updateState(val, this.setHeight)}}/>                
+                    <CreateSlider title={"width"} minVal={0} maxVal={1000} initState={this.width} callBack={(val) => {this.updateState(val, this.setWidth)}} />
+                    <CreateSlider title={"paddingVertical"} minVal={0} maxVal={1000} initState={this.paddingVertical} callBack={(val) => {this.updateState(val, this.setPaddingVertical)}}/>  
+                    <CreateSlider title={"paddingHorizontal"} minVal={0} maxVal={1000} initState={this.paddingHorizontal} callBack={(val) => {this.updateState(val, this.setPaddingHorizontal)}} />                  
                 </View>
             </View>
         )
@@ -199,10 +214,11 @@ export default class ssViewConstruction implements ssGroupInterface{
     getStyle(){  
         //console.log('get style called, style is', this.width) 
         const styling = {
-            width: this.width, 
-            height: this.height,
             backgroundColor: this.color, 
             borderColor: this.borderColor,
+            opacity: this.opacity,
+            width: this.width, 
+            height: this.height,
             paddingVertical: this.paddingVertical, 
             paddingHorizontal: this.paddingHorizontal,
             justifyContent: this.justifyContent,
