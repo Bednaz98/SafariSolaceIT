@@ -4,7 +4,7 @@ import { appContext } from "../classes/app-context";
 import LocalHandler from "../classes/local-handler";
 import { Employee } from "../entities/user";
 import { localInterface } from "../interfaces/employee-api-interface";
-import GetStyle from "../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-style";
+import GetStyle from "../SafariSolaceStyleTools/STYLING/get-style";
 import BasicButton from "../SafariSolaceStyleTools/UI TYPES/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/UI TYPES/basicinputtext";
 import BasicText from "../SafariSolaceStyleTools/UI TYPES/basictext";

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View,Text } from 'react-native'
-import GetStyle from '../DEVELOPER STYLING TOOLS/get-style'
+import GetStyle from '../STYLING/get-style'
 
 
 

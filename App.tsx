@@ -2,7 +2,7 @@ import {useEffect, useState } from "react";
 import EmployeeInfo from "./components/employee-info-and-pw-change";
 import { Employee } from "./entities/user";
 import { ssContext, ssContextInterface} from "./SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/ss-context";
-import { ssKeys, ssKeysInterface } from "./SafariSolaceStyleTools/STYLING/ss-style-keys";
+import { ssKeys, ssKeysInterface } from "./SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/ss-style-keys";
 import SSPlayground from "./ss-playground";
 
 //the sliderStyler psuedo app

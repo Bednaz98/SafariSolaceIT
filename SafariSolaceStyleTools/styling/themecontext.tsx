@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { Theme } from "../DEVELOPER STYLING TOOLS/get-style";
+import { Theme } from "./get-style";
 
 
 

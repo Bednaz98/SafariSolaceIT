@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { appContext, AppContextInterface } from './classes/app-context';
 import EmployeeInfo from './components/employee-info-and-pw-change';
 import LocalEmployee, { Employee, Status } from './entities/user';
-import { Theme } from './SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/get-style';
+import { Theme } from './SafariSolaceStyleTools/STYLING/get-style';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/STYLING/themecontext';
 
 

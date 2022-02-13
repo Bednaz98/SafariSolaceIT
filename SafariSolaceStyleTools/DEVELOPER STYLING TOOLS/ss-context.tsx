@@ -1,5 +1,16 @@
 import { createContext} from "react";
-import { ssKeysInterface } from "../STYLING/ss-style-keys";
+import { ssKeysInterface } from "./ss-style-keys";
+
+export interface ssContextInterface{  
+    styleContextObject: ssKeysInterface
+    setStyleContextObject: Function
+    setByKey: Function
+    getByKey: Function
+}
+
+// ssContextInit
+export const ssContext = createContext(undefined)
+
 
 
 interface stylePropsView{
@@ -30,17 +41,3 @@ export interface stylePropsText{
     textShadowOffset: object //{width, height}
     textShadowRadius: number
 }
-
-
-
-//list and scrollview interface?
-
-export interface ssContextInterface{  
-    styleContextObject: ssKeysInterface
-    setStyleContextObject: Function
-    setByKey: Function
-    getByKey: Function
-}
-
-// ssContextInit
-export const ssContext = createContext(undefined)

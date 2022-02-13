@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ssStyleSheet } from "../STYLING/ss-stylesheet";
-import { themeContext } from "../STYLING/themecontext";
+import { ssStyleSheet } from "./ss-stylesheet";
+import { themeContext } from "./themecontext";
 
 export enum Theme{
     default,

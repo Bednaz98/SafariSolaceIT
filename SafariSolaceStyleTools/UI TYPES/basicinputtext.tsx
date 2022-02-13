@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleProp, TextInput, View, ViewStyle } from "react-native";
-import GetStyle from "../DEVELOPER STYLING TOOLS/get-style";
-import { key } from "../STYLING/ss-style-keys";
+import { TextInput, View } from "react-native";
+
+
 
 
 export default function BasicInputText(props){

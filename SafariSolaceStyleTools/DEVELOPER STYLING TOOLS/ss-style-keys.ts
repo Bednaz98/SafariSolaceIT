@@ -9,7 +9,7 @@ export interface ssKeysInterface{
     Modal: Object
     MenuButton: Object
     SyncButton: Object
-    infoText: Object
+    InfoText: Object
     titleText: Object
 }
 
@@ -23,6 +23,6 @@ export const ssKeys: ssKeysInterface = {
     Modal: {},
     MenuButton: {},
     SyncButton: {},
-    infoText: {},
+    InfoText: {},
     titleText: {},    
 }

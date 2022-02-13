@@ -1,6 +1,4 @@
 import { StyleSheet } from "react-native";
-import ssStyles from "../../SafariSolaceStyleTools/DEVELOPER STYLING TOOLS/ssStyles.json" //parsed json
-import { ssKeys, ssKeysInterface } from "./ss-style-keys";
 
 // export const defaultThemeStyle = StyleSheet.create({
 //     MenuButton:{},
