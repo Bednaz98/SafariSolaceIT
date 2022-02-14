@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View} from "react-native";
+import { Dimensions, View} from "react-native";
 import { appContext } from "../classes/app-context";
 import LocalHandler from "../classes/local-handler";
 import { Employee } from "../entities/user";
@@ -7,7 +7,8 @@ import { localInterface } from "../intrerfaces/employee-api-interface";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
 import BasicModal from "../SafariSolaceStyleTools/basicmodal";
-import BasicText from "../SafariSolaceStyleTools/basictext";
+import BasicText, { TextType } from "../SafariSolaceStyleTools/basictext";
+import PixelSpacer from "../SafariSolaceStyleTools/pixel-spacer";
 
 /** Displays the employee info and contains password change functionality
  *  @param employee the employee that the admin wishes to view
@@ -53,23 +54,24 @@ export default function EmployeeInfo(props: { employee: Employee }) {
 
     //render page
     function renderPage(){
-        return (<>
-            <BasicText text={`Name: ${employee.fname} ${employee.lname}`}/>
-            <BasicText text={ `Username: ${ employee.username }` }/>
-            <BasicText text={ `ID: ${ employee.id }`}/>
-            <BasicText text={ `Manager: ${ employee.isManager ? 'Yes':'No' }`}/>
-
-            {pwUpdateState ? (
-                <View>
-                    <BasicInputText
-                        value={pwState}
-                        onChangeText={setpw}
-                        placeholder="new password"
-                    ></BasicInputText>
-                    <BasicButton title="save" onPress={() => savepwToContext()}/>
-                </View>
-            ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}             
-        </>)
+        return (
+            <View style={{alignSelf:"stretch"}}>
+                <PixelSpacer width={Dimensions.get("screen").width*.2} height={1} textType={TextType.Header}/>
+                <BasicText text={`Name: ${employee.fname} ${employee.lname}`} textType={TextType.Header}/>
+                <BasicText text={ `Username: ${ employee.username }`  } textType={TextType.Header}/>
+                <BasicText text={ `ID: ${ employee.id }`} textType={TextType.Header}/>
+                <BasicText text={ `Manager: ${ employee.isManager ? 'Yes':'No' }`} textType={TextType.Header}/>
+                {pwUpdateState ? (
+                    <View>
+                        <BasicInputText
+                            value={pwState}
+                            onChangeText={setpw}
+                            placeholder="new password"
+                        ></BasicInputText>
+                        <BasicButton title="save" onPress={() => savepwToContext()}/>
+                    </View>
+                ) : <BasicButton title="Create New Password" onPress={() => setpwUpdate(true)}/>}             
+            </View>)
     }
 
     //get name

@@ -12,7 +12,7 @@ export default function BasicDropdown(props) {
     <View style={{padding:5}}>
       <TouchableOpacity onPress={() => setExpanded(!expanded)} style={{shadowRadius:shadowRadius(),borderRadius:borderRadius()}}>
         <View style={{ flexDirection: "column" }}>
-          <View >
+          <View>
             <BasicText text={props.title} />
           </View>
           <TouchableOpacity>

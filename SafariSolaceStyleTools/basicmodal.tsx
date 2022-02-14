@@ -37,7 +37,6 @@ export default function BasicModal(props){
             onRequestClose={() => {setShow(!show)}}>
             <View style={ styles.modalView}>
               <View style={{ margin:margin(),padding:paddingRadius(), borderRadius:borderRadius(), backgroundColor:GetColor(Color.ModalBackground), borderWidth:5}}>
-
                   {child}
                 <BasicButton title={"close"} onPress={()=>{setShow(!show)}}/>
               </View>

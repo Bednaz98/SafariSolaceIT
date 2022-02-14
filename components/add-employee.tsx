@@ -1,12 +1,13 @@
-import { useContext, useState } from "react";
-import {Switch} from "react-native";
+import React, { useContext, useState } from "react";
+import {Dimensions, Switch, View} from "react-native";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
 import BasicInputText from "../SafariSolaceStyleTools/basicinputtext";
-import BasicText from "../SafariSolaceStyleTools/basictext";
+import BasicText, { TextType } from "../SafariSolaceStyleTools/basictext";
 import BasicModal from "../SafariSolaceStyleTools/basicmodal"
 import LocalHandler from "../classes/local-handler";
 import { Employee } from "../entities/user";
 import { appContext } from "../classes/app-context";
+import PixelSpacer from "../SafariSolaceStyleTools/pixel-spacer";
 
 
 export default function AddEmployee(){
@@ -37,16 +38,19 @@ export default function AddEmployee(){
 
     function addDisplay(){
         return(<>
-        <BasicText text="First Name"/>
+        <PixelSpacer width={Dimensions.get("screen").width*.2} height={1}/>
+        <BasicText text="First Name" textType={TextType.Header}/>
         <BasicInputText value={fname} onChangeText={t => setFname(t)} placeholder="John"/>
-        <BasicText text="Last Name"/>
+        <BasicText text="Last Name" textType={TextType.Header}/>
         <BasicInputText value={lname} onChangeText={t => setLname(t)} placeholder="Smith"/>
-        <BasicText text="Username"/>
+        <BasicText text="Username" textType={TextType.Header}/>
         <BasicInputText value={username} onChangeText={t => setUsername(t)} placeholder="jsmith"/>
-        <BasicText text="Password"/>
+        <BasicText text="Password" textType={TextType.Header}/>
         <BasicInputText value={password} onChangeText={t => setPassword(t)} placeholder="********"/>
-        <BasicText text="Is person manager?"/>
-        <Switch onValueChange={() => setIsManager(v => !v)} value={isManager}/>
+        <View style={{flexDirection:"row", alignItems:"center", justifyContent:"center"}}>
+            <BasicText text="Is person manager?" textType={TextType.Header}/>
+            <Switch onValueChange={() => setIsManager(v => !v)} value={isManager}/>
+        </View>
         <BasicButton onPress={submit} title="Submit"/>
         </>)
     }

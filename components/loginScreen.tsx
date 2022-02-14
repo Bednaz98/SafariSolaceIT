@@ -3,7 +3,7 @@ import { useMsal } from "@azure/msal-react";
 import React, { useState } from "react";
 import { View } from "react-native";
 import BasicButton from "../SafariSolaceStyleTools/basicbutton";
-import BasicText from "../SafariSolaceStyleTools/basictext";
+import BasicText, { TextType } from "../SafariSolaceStyleTools/basictext";
 import LoadingScreen from "./loadingScreen";
 
 export function LoginScreen(props){
@@ -27,7 +27,7 @@ export function LoginScreen(props){
 
 return(
   <View>
-      <BasicText text={" Sign in "} />
+      <BasicText text={" Sign in "} textType={TextType.Title}/>
       <BasicButton onPress={() => {login()}} title={"Login"}/>
   </View>
 )

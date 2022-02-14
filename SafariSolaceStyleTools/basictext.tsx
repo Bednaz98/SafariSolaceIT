@@ -1,5 +1,5 @@
 import React from 'react'
-import { View,Text } from 'react-native'
+import { View,Text, Platform } from 'react-native'
 import GetColor, { Color } from './styleconfig'
 
 
@@ -9,16 +9,13 @@ export default function BasicText(props){
     if(!text){throw new Error('You did not pass a text value into one of your text')}
     //This will grab from the props the type of text for styling
     // is not found, it will default to general text
-    const textType:TextType = props?.type ?? TextType.General
+    const textType:TextType = props.textType
     let textColor = Color.Text
-    switch(textType){
-        case TextType.General:{textColor =Color.Text ;   ;break }
-        case TextType.Header:{textColor =Color.textHeader;  ; break}
-        case TextType.Title:{textColor =Color.textTitle ; ;break}
-    }
+    let textAlign:string = "auto";
+    if(props?.textAlign) {textAlign =props?.textAlign  }
     return (
     <View style={{margin:5}}>
-        <Text style={[{color:GetColor(textColor)}, getTextStyle(textType)]}>{text}</Text>
+        <Text style={{color:GetColor(textColor), fontSize:getTextFontSize(textType),textAlign:getAlignment(textAlign,textType) }}>{text}</Text>
     </View>)
 }
 
@@ -30,13 +27,33 @@ export enum TextType{
     Header,
     General
 }
-function getTextStyle(textType:TextType){
+function getAlignment(textAlign:string,textType:TextType){
+    const tempAlign = textAlign ?? "auto"
     switch(textType){
-    case TextType.Title  :  {return { fontSize:70}}
-    case TextType.Header :  {return {fontSize:40}}
-    case TextType.Header :  {return {fontSize:20}}
-    // The default case should be exactly the same as the general text as an edge case
-    default              :  {return {fontSize:20}}
-    //=================================================================================
+        case TextType.Title:{return "center"}
+        case TextType.Header:{return "center"}
+        case TextType.General:{return tempAlign}
+        default : {return tempAlign}
+
+    }
+}
+
+function getTextFontSize(textType:TextType){
+    if(Platform.OS == "web"){
+        switch(textType){
+            case TextType.Title  :  {return 50}
+            case TextType.Header:  {return 30}
+            case TextType.General:  {return 20}
+            // The default case should be exactly the same as the general text as an edge case
+            default              :  {return 20}
+            }
+    }
+    else{
+        switch(textType){
+            case TextType.Title  :  {return 30}
+            case TextType.Header:  {return 20}
+            case TextType.General:  {return 10}
+            default              :  {return 10}
+        }
     }
 }

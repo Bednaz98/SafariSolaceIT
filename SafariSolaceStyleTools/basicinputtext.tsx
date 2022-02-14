@@ -12,12 +12,13 @@ export default function BasicInputText(props){
     const editable = props?.editable ?? true;
     const onChange = props?.onChange ?? ( ({ nativeEvent: { eventCount, target, text} }) => {} ) ;
     const onContentSizeChange = props?.onContentSizeChange ?? ( ({ nativeEvent: { contentSize: { width, height } } }) => {} );
+    const textAlign = props?.textAlign ?? 'center'
 
     return(
     <View style={{backgroundColor:GetColor(Color.InputText), borderRadius:borderRadius(), margin:margin(), padding:paddingRadius(), shadowRadius:shadowRadius()}}> 
         <TextInput value={value} onChangeText={onChangeText} placeholder={placeholder} 
         keyboardType={keyboardType} editable={editable} onChange={onChange} onContentSizeChange={onContentSizeChange}
-        style={{fontSize:20}} 
+        style={{fontSize:20,textAlign:textAlign}} 
         />
     </View>)
 }
