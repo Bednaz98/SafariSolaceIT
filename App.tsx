@@ -2,7 +2,7 @@ import { Configuration, PublicClientApplication } from '@azure/msal-browser';
 import { AuthenticatedTemplate, MsalProvider, UnauthenticatedTemplate } from '@azure/msal-react';
 import React from 'react';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { appContext, AppContextInterface } from './classes/app-context';
 //import EmployeeInfo from './components/employee-info-and-pw-change';
 import HomePage from './components/homepage';
@@ -11,6 +11,7 @@ import { LoginScreen } from './components/loginScreen';
 import UnAuthScreen from './components/unAuthScreen';
 import LocalEmployee, { Employee, Status } from './entities/user';
 import BasicText from './SafariSolaceStyleTools/basictext';
+import PixelSpacer from './SafariSolaceStyleTools/pixel-spacer';
 import GetColor, { Color, Theme } from './SafariSolaceStyleTools/styleconfig';
 import { themeContext, ThemeContextInterface } from './SafariSolaceStyleTools/themecontext';
 
@@ -89,14 +90,15 @@ export default function App() {
       <appContext.Provider value={initContext}>
         <themeContext.Provider value={themeContextObject}>
         <Image style={{height:64*3,width:64*3,margin:10}} source={ require('./assets/Sale.png') }/>
-          <MsalProvider instance={client}>
+          {switchDisplay()}
+          {/* <MsalProvider instance={client}>
             <UnauthenticatedTemplate>
               <UnAuthScreen />
             </UnauthenticatedTemplate>
             <AuthenticatedTemplate>
               {switchDisplay()}
             </AuthenticatedTemplate>
-          </MsalProvider>
+          </MsalProvider> */}
         </themeContext.Provider>
       </appContext.Provider>
     </View>

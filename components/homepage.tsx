@@ -15,7 +15,7 @@ import SettingsPage from "./settingsScreen";
 
 export default function HomePage(){
 
-    const httpHandler: HttpInterface = new HttpHandler(true);
+    const httpHandler: HttpInterface = new HttpHandler(false);
     const localHandler: localInterface = new LocalHandler();
     const context = useContext(appContext)
 

@@ -24,7 +24,6 @@ export default function SettingsPage(prop) {
     instance.logout();
     prop.setPage(0);
   } 
-
     return (
         <View>
             <PixelSpacer width={Dimensions.get("screen").width*.2} height={1}/>

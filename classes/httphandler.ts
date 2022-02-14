@@ -8,7 +8,7 @@ import LocalHandler from "./local-handler";
 
 
 export default class HttpHandler implements EmployeeInterface{
-    private useURL:string = "http://20.124.74.192:3000";
+    private useURL:string = "http://20.121.72.15:3000";
     private devMode:boolean = false;
     /////////////////////////////////////////////
     private context = useContext(appContext);
