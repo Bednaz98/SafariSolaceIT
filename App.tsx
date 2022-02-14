@@ -90,15 +90,14 @@ export default function App() {
       <appContext.Provider value={initContext}>
         <themeContext.Provider value={themeContextObject}>
         <Image style={{height:64*3,width:64*3,margin:10}} source={ require('./assets/Sale.png') }/>
-          {switchDisplay()}
-          {/* <MsalProvider instance={client}>
+          <MsalProvider instance={client}>
             <UnauthenticatedTemplate>
               <UnAuthScreen />
             </UnauthenticatedTemplate>
             <AuthenticatedTemplate>
               {switchDisplay()}
             </AuthenticatedTemplate>
-          </MsalProvider> */}
+          </MsalProvider>
         </themeContext.Provider>
       </appContext.Provider>
     </View>
