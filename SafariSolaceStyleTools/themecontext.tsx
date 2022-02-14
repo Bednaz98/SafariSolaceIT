@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { Theme } from "./colorstyle";
+import { Theme } from "./styleconfig";
 
 
 
@@ -9,7 +9,7 @@ export interface ThemeContextInterface{
     setTheme:Function
 }
 
-export const themeContextObject:ThemeContextInterface = {theme:0,setTheme:()=>{}}
+export const themeContextObject:ThemeContextInterface = {theme:0, setTheme:()=>{}}
 
 /**This is the global 'Theme' context*/
 export const themeContext = createContext(themeContextObject)

@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput, View } from "react-native";
-import GetColor, { Color } from "./colorstyle";
+import GetColor, { borderRadius, Color, margin, paddingRadius, shadowRadius } from "./styleconfig";
 
 
 export default function BasicInputText(props){
@@ -14,8 +14,10 @@ export default function BasicInputText(props){
     const onContentSizeChange = props?.onContentSizeChange ?? ( ({ nativeEvent: { contentSize: { width, height } } }) => {} );
 
     return(
-    <View style={{backgroundColor:GetColor(Color.InputText), padding:3}}> 
+    <View style={{backgroundColor:GetColor(Color.InputText), borderRadius:borderRadius(), margin:margin(), padding:paddingRadius(), shadowRadius:shadowRadius()}}> 
         <TextInput value={value} onChangeText={onChangeText} placeholder={placeholder} 
-        keyboardType='default' editable={editable} onChange={onChange} onContentSizeChange={onContentSizeChange}/>
+        keyboardType={keyboardType} editable={editable} onChange={onChange} onContentSizeChange={onContentSizeChange}
+        style={{fontSize:20}} 
+        />
     </View>)
 }

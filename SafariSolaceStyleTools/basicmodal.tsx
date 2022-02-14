@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Modal, View,StyleSheet, Button } from "react-native";
 import BasicButton from "./basicbutton";
-import BasicText from "./basictext";
-import GetColor, { Color } from "./colorstyle";
+import GetColor, { borderRadius, Color, margin, paddingRadius } from "./styleconfig";
+import FlexSpacer from "./flex-spacer";
+import PixelSpacer from "./pixel-spacer";
 
 
 
@@ -12,15 +13,11 @@ export default function BasicModal(props){
   
 
   const [show, setShow] = useState(false);
-
   const styles = StyleSheet.create({
     modalView: {
       flexDirection:"column",
-      margin: 20,
-      backgroundColor:GetColor(Color.Modal),
-      borderRadius: 20,
-      padding: 35,
-      alignItems: "center",
+      flex:1,
+      alignContent:"center", justifyContent:"center",alignItems:"center",
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
@@ -31,24 +28,23 @@ export default function BasicModal(props){
 
     return(
       <View>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={show}
-          onRequestClose={() => {setShow(!show)}}>
-          <View style={ {flex: 1, justifyContent: "center", alignItems: "center", marginTop: 22, backgroundColor:GetColor(Color.Modal)} }>
-            <View style={styles.modalView}>
+        <View style={{alignItems:"center", justifyContent:"center"}}>
+          {/* Main Modal  */}
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={show}
+            onRequestClose={() => {setShow(!show)}}>
+            <View style={ styles.modalView}>
+              <View style={{ margin:margin(),padding:paddingRadius(), borderRadius:borderRadius(), backgroundColor:GetColor(Color.ModalBackground), borderWidth:5}}>
 
-              <View>
-                {child}
-              </View>
-              <View>
+                  {child}
                 <BasicButton title={"close"} onPress={()=>{setShow(!show)}}/>
               </View>
-
             </View>
-          </View>
-        </Modal>
+          </Modal>
+          {/* Main Modal  */}
+        </View>
 
         <BasicButton title={openTitle} onPress={()=>{setShow(true)}}/>
 
